@@ -1,5 +1,8 @@
 custom:
   ports:
+    public-api:
+      httpPort: 3000
+      lambdaPort: 3002
   serverless-offline:
     httpPort: ${self:custom.ports.${self:service}.httpPort}
     lambdaPort: ${self:custom.ports.${self:service}.lambdaPort}
