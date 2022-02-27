@@ -8,9 +8,12 @@ import {
 import { Schema } from './schema';
 import { addJest } from './jest-config';
 import { addWorkspaceConfig } from './workspace-config';
+import { updateServerlessCommon } from './serverless-common';
 
 export default async (host: Tree, schema: Schema) => {
   const serviceRoot = `services/${schema.name}`;
+
+  updateServerlessCommon(schema.name);
 
   generateFiles(
     host, // the virtual file system
