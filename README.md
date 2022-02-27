@@ -33,7 +33,7 @@ A monrepo style, modern boilerplate or template project for [Serverless framewor
 
 ```shell
 .
-├── stacks/    # stack for each serverless configuration/template and its associated files
+├── services/    # stack for each serverless configuration/template and its associated files
 ├── libs/      # shared libraries
 ├── tools/
 ├── README.md
@@ -124,7 +124,7 @@ Depending on your prefrered package manager, follow the instructions below to bu
     nx affected:build --stage=<STAGE_NAME>
     ```
 
-  - To package all stacks
+  - To package all services
 
     ```shell
     nx run-many --target=build --stage=<STAGE_NAME>
@@ -144,7 +144,7 @@ Depending on your prefrered package manager, follow the instructions below to bu
     nx affected:deploy --stage=<STAGE_NAME>
     ```
 
-  - To deploy all stacks
+  - To deploy all services
 
     ```shell
     nx run-many --target=deploy --all --stage=<STAGE_NAME>
@@ -164,7 +164,7 @@ Depending on your prefrered package manager, follow the instructions below to bu
     nx affected:remove --stage=<STAGE_NAME>
     ```
 
-  - To remove all stacks
+  - To remove all services
 
     ```shell
     nx run-many --target=remove --all --stage=<STAGE_NAME>
@@ -184,7 +184,7 @@ Depending on your prefrered package manager, follow the instructions below to bu
     nx affected:test --stage=<STAGE_NAME>
     ```
 
-  - To run tests in all stacks
+  - To run tests in all services
 
     ```shell
     nx run-many --target=test --all --stage=<STAGE_NAME>

@@ -23,7 +23,7 @@
     }
   },
   "workspaceLayout": {
-    "appsDir": "stacks"
+    "appsDir": "services"
   },
   "projects": {}
 }

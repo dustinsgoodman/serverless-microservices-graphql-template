@@ -8,7 +8,7 @@
     "test": "nx test",
     "lint": "nx workspace-lint && nx lint",
     "e2e": "nx e2e",
-    "affected:stacks": "nx affected:apps",
+    "affected:services": "nx affected:apps",
     "affected:libs": "nx affected:libs",
     "affected:build": "nx affected:build",
     "affected:e2e": "nx affected:e2e",
