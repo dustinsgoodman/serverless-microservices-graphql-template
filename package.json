@@ -36,6 +36,9 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@graphql-tools/merge": "^8.2.3",
+    "apollo-server-lambda": "^3.6.3",
+    "graphql": "^16.3.0",
     "tslib": "^2.3.1"
   },
   "devDependencies": {
@@ -55,11 +58,14 @@
     "@types/serverless": "^3.0.0",
     "@typescript-eslint/eslint-plugin": "^5.12.1",
     "@typescript-eslint/parser": "^5.12.1",
+    "apollo": "^2.33.9",
+    "apollo-server-testing": "^2.25.3",
     "esbuild": "^0.14.23",
     "esbuild-node-externals": "^1.4.1",
     "esbuild-visualizer": "^0.3.1",
     "eslint": "^8.10.0",
     "eslint-config-prettier": "^8.4.0",
+    "graphql-schema-linter": "^2.0.1",
     "husky": "^7.0.4",
     "jest": "^27.5.1",
     "js-yaml": "^4.1.0",
