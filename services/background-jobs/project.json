@@ -1,0 +1,54 @@
+{
+  "root": "services/background-jobs",
+  "projectType": "application",
+  "sourceRoot": "services/background-jobs/src",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "cwd": "services/background-jobs",
+        "color": true,
+        "command": "sls package"
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "cwd": "services/background-jobs",
+        "color": true,
+        "command": "sls offline start"
+      }
+    },
+    "deploy": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "cwd": "services/background-jobs",
+        "color": true,
+        "command": "sls deploy"
+      }
+    },
+    "remove": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "cwd": "services/background-jobs",
+        "color": true,
+        "command": "sls remove"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["services/background-jobs/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/services/background-jobs"],
+      "options": {
+        "jestConfig": "services/background-jobs/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": ["stack"]
+}

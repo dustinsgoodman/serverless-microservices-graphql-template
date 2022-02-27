@@ -1,6 +1,7 @@
 {
   "version": 2,
   "projects": {
+    "background-jobs": "services/background-jobs",
     "public-api": "services/public-api"
   }
 }

@@ -1,0 +1,31 @@
+service: background-jobs
+plugins:
+  - serverless-s3-remover
+  - serverless-esbuild
+  - serverless-analyze-bundle-plugin
+  - serverless-offline
+frameworkVersion: '3'
+useDotenv: true
+
+custom: ${file(../../serverless.common.yml):custom}
+
+package:
+  individually: true
+  patterns:
+    - 'handler.js'
+    - '!node_modules/**'
+  excludeDevDependencies: true
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'us-east-1'}
+
+functions:
+  healthcheck:
+    handler: handler.healthcheck
+    events:
+      - httpApi:
+          path: /healthcheck
+          method: get

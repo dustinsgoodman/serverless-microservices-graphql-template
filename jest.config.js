@@ -1,3 +1,6 @@
 module.exports = {
-  projects: ['<rootDir>/services/public-api'],
+  projects: [
+    '<rootDir>/services/public-api',
+    '<rootDir>/services/background-jobs',
+  ],
 };
