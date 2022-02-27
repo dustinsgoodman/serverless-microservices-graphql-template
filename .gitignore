@@ -38,8 +38,12 @@ testem.log
 .DS_Store
 Thumbs.db
 
+# packaging
 .serverless
 .vscode
 .dynamodb
 .webpack
 .esbuild
+
+# Secrets
+.env
