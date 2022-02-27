@@ -42,6 +42,9 @@ jobs:
 
       - name: Run tests
         run: yarn nx run-many --target=test --all
+        env:
+          IS_OFFLINE: ${{ secrets.IS_OFFLINE }}
+          SLS_STAGE: ${{ secrets.SLS_STAGE }}
 
       - name: Sls package
         run: yarn nx run-many --target=build --all --stage=ci
