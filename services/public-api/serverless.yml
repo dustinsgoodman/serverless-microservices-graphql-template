@@ -21,10 +21,32 @@ provider:
   runtime: nodejs14.x
   stage: ${opt:stage, 'dev'}
   region: ${opt:region, 'us-east-1'}
+  httpApi:
+    cors: true
+  tracing:
+    apiGateway: true
+    lambda: true
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - lambda:InvokeFunction
+          Resource: '*'
 
 functions:
+  graphql:
+    handler: src/handlers/graphql.server
+    events:
+      - httpApi:
+          path: /graphql
+          method: post
+      - httpApi:
+          path: /graphql
+          method: get
+
   healthcheck:
-    handler: handler.healthcheck
+    handler: src/handlers/healthcheck.handler
     events:
       - httpApi:
           path: /healthcheck
