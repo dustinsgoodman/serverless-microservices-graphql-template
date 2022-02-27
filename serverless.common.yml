@@ -1,0 +1,10 @@
+custom:
+  ports:
+
+  serverless-offline:
+    httpPort: ${self:custom.ports.${self:service}.httpPort}
+    lambdaPort: ${self:custom.ports.${self:service}.lambdaPort}
+
+  esbuild:
+    packager: yarn
+    plugins: ../../esbuild-plugins.js

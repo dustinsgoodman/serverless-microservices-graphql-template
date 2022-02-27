@@ -1,7 +1,13 @@
-# <%= name %>
+# <%= name %> Service
 
-This stack was generated with [Nx](https://nx.dev).
+What is the purpose of this service?
 
-## Running unit tests
+## Architecture
 
-Run `nx test <%= name %>` to execute the unit tests via [Jest](https://jestjs.io).
+- What belongs in this service?
+- Any particular file structures or rules to follow for contribution?
+- Other important architectural decisions
+
+## Scripts
+
+List important scripts here
