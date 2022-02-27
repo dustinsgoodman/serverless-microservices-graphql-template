@@ -27,7 +27,9 @@
     "help": "nx help",
     "prepare": "husky install"
   },
-  "dependencies": {},
+  "dependencies": {
+    "tslib": "^2.3.1"
+  },
   "devDependencies": {
     "@aws-sdk/types": "^3.53.0",
     "@jest/transform": "^27.5.1",
