@@ -25,5 +25,7 @@
   "workspaceLayout": {
     "appsDir": "services"
   },
-  "projects": {}
+  "cli": {
+    "defaultCollection": "@nrwl/node"
+  }
 }
