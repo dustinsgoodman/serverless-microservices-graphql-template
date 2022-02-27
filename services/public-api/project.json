@@ -48,6 +48,14 @@
         "jestConfig": "services/public-api/jest.config.js",
         "passWithNoTests": true
       }
+    },
+    "codegen": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "cwd": "services/public-api",
+        "color": true,
+        "command": "graphql-codegen"
+      }
     }
   },
   "tags": ["stack"]
