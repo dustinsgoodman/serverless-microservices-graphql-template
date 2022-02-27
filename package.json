@@ -1,6 +1,7 @@
 {
-  "name": "nx-serverless-template",
+  "name": "serverless-template",
   "version": "1.0.0",
+  "license": "UNLICENSED",
   "private": true,
   "scripts": {
     "nx": "nx",
