@@ -111,6 +111,13 @@
       "input-object-values-have-descriptions",
       "types-are-capitalized",
       "types-have-descriptions"
-    ]
+    ],
+    "ignore": {
+      "types-have-descriptions": [
+        "Query",
+        "Mutation",
+        "Subscription"
+      ]
+    }
   }
 }
