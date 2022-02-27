@@ -60,7 +60,6 @@
     "serverless": "^3.4.0",
     "serverless-analyze-bundle-plugin": "^1.1.0",
     "serverless-esbuild": "^1.25.0",
-    "serverless-jest-plugin": "^0.4.0",
     "serverless-offline": "^8.5.0",
     "serverless-s3-remover": "^0.6.0",
     "ts-jest": "^27.1.3",
