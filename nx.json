@@ -1,5 +1,5 @@
 {
-  "npmScope": "nx-serverless-template",
+  "npmScope": "serverless-template",
   "affected": {
     "defaultBase": "main"
   },
