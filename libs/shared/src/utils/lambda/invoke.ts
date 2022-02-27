@@ -89,8 +89,6 @@ export const invoke = async ({
     endpoint: invokeUrl,
   });
 
-  console.log(PORTS);
-
   const { Payload } = await lambda.invoke(params).promise();
   return JSON.parse(Payload as string);
 };
