@@ -5,10 +5,21 @@ import {
 } from 'aws-lambda';
 import { Lambda } from '../../api';
 import { downcaseKeys } from '../object';
+import { readFileSync } from 'fs';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const yaml = require('js-yaml');
 
-const PORTS = {
-  'public-api': 3002,
-};
+const serverlessCommon = yaml.load(
+  readFileSync('./serverless.common.yml', 'utf8')
+);
+const PORTS = Object.entries(serverlessCommon.custom.ports).reduce(
+  (acc, [serviceName, servicePorts]) => {
+    const { lambdaPort } = servicePorts as { lambdaPort: number };
+    acc[serviceName] = lambdaPort;
+    return acc;
+  },
+  {}
+);
 
 export type Context = {
   event?: APIGatewayProxyEvent;
@@ -77,6 +88,8 @@ export const invoke = async ({
     region: process.env.REGION,
     endpoint: invokeUrl,
   });
+
+  console.log(PORTS);
 
   const { Payload } = await lambda.invoke(params).promise();
   return JSON.parse(Payload as string);
