@@ -31,8 +31,8 @@ jobs:
       - name: Install packages
         run: yarn install --frozen-lockfile
 
-      - name: Generate stack
-        run: yarn nx workspace-generator serverless test-stack
+      - name: Generate service
+        run: yarn nx workspace-generator service test-stack
 
       - name: Generate library
         run: yarn nx g @nrwl/node:lib test-lib --tags lib
