@@ -1,14 +1,13 @@
-# nx-serverless-template
+# serverless-template
 
 [![serverless](http://public.serverless.com/badges/v3.svg)](http://www.serverless.com)
 [![](https://img.shields.io/badge/monorepo-Nx-blue)](https://nx.dev/)
 ![npm peer dependency version (scoped)](https://img.shields.io/npm/dependency-version/eslint-config-prettier/peer/eslint)
 ![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/sudokar/nx-serverless/blob/master/LICENSE)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/sudokar/nx-serverless)
-![Maintained](https://img.shields.io/maintenance/yes/2021.svg)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/dustinsgodman/serverless-template)
 
-A monrepo style, modern boilerplate or template project for [Serverless framework](https://www.serverless.com/) using [Nx](https://nx.dev) monorepo toolkit 🛠 and `aws-nodejs-typesript` serverless template
+A template for a Serverless Framework microservices architecture based on the [nx-serverless-template by sudokar](https://github.com/sudokar/nx-serverless).
 
 ## Table of contents
 
@@ -17,7 +16,6 @@ A monrepo style, modern boilerplate or template project for [Serverless framewor
 - [Prerequisites](#prerequisites)
 - [Usage](#usage)
 - [Further help](#further-help)
-- [Nx Cloud](#nx-cloud)
 - [Contribution](#contribution)
 - [Support](#support)
 - [Maintainer](#maintainer)
@@ -25,15 +23,25 @@ A monrepo style, modern boilerplate or template project for [Serverless framewor
 
 ## Whats Included
 
-- A template project layout using latest version of Nx and Servrless framework
-- An easy to use workspace generator to generate a template/stack with Serverless framework files and related Nx configuration
-- Configured with AWS provider and it can be easily adopted to any cloud provider
+- A template project layout using latest version of Nx and Servrless Framework
+- An easy to use workspace generator to generate a template/stack with Serverless Framework files and related Nx configuration
+- Configured with a basic AWS provider that can be easily adopted to any cloud provider
+- Serverless Offline microservices architecture support
+
+### How does this differ from the original template?
+
+The original template is phenomenal, but I was aiming for some additional customizations and different core libraries. Specifically:
+
+- This version uses esbuild instead of webpack
+- This version provides some common utility functions for a microservices architecture
+- Upstream used Nx Cloud and some other 3rd party tools where this version uses just GitHub Actions
+- This version provides opinionated public-api and background-jobs services for consumption.
 
 ## Template Layout
 
 ```shell
 .
-├── services/    # stack for each serverless configuration/template and its associated files
+├── services/    # each serverless configuration/template and its associated files
 ├── libs/      # shared libraries
 ├── tools/
 ├── README.md
@@ -41,9 +49,8 @@ A monrepo style, modern boilerplate or template project for [Serverless framewor
 ├── jest.preset.js
 ├── nx.json
 ├── package.json
-├── serverless.base.ts  # base configuration for serverless
+├── serverless.common.yml  # shared serverless configuration
 ├── tsconfig.base.json
-├── webpack.base.config.ts   # base configuration for webpack
 ├── workspace.json
 ├── .editorconfig
 ├── .eslintrc.json
@@ -56,187 +63,145 @@ A monrepo style, modern boilerplate or template project for [Serverless framewor
 
 ## Prerequisites
 
-- [Nodejs](https://nodejs.org/) `protip: use nvm`
-
-  > :warning: **Version**: `lts/fermium (v.14.x.x)`. If you're using [nvm](https://github.com/nvm-sh/nvm), run `nvm use` to ensure you're using the same Node version in local and in your lambda's runtime.
-
-- :package: Package Manager
-
-  - [Yarn](https://yarnpkg.com)
-
-    (or)
-
-  - NPM `Pre-installed with Nodejs`
-
+- [Node.js 14.19.0](https://nodejs.org/) - [nvm](https://github.com/nvm-sh/nvm) recommended
+- [Yarn](https://yarnpkg.com)
+- [Serverless Framework v3](https://serverless.com/)
 - 💅 Code format plugins
-
   - [Eslint](https://eslint.org/)
   - [Prettier](https://prettier.io/)
   - [EditorConfig](https://editorconfig.org/)
-
-  > On your preferred code editor, Install plugins for the above list of tools
+- Jest for testing
 
 ## Usage
 
-Depending on your prefrered package manager, follow the instructions below to build and deploy serverless stack(s).
+**Install project dependencies**
 
-- **Install project dependencies**
+```shell
+yarn
+```
 
-  - Using NPM
+**Generate a new service**
 
-    ```shell
-    npm i
-    ```
+```shell
+yarn workspace-generator service <SERVICE_NAME>
+```
 
-  - Using Yarn
+**Generate a new library**
 
-    ```shell
-    yarn
-    ```
+```shell
+nx g @nrwl/node:lib <LIBRARY_NAME>
+```
 
-- **Generate a new stack**
+**Packaging services**
 
-  ```shell
-  nx workspace-generator serverless <STACK_NAME>
-  ```
-
-  > Run with `-d` or `--dry-run` flag for dry run
-
-- **Generate a new library**
+- To package single service
 
   ```shell
-  nx g @nrwl/node:lib --skipBabelrc --tags lib <LIBRARY_NAME>
+  yarn build <SERVICE_NAME> --stage <STAGE_NAME>
   ```
 
-  > Run with `-d` or `--dry-run` flag for dry run
+- To package services affected by a change
 
-- **Package stack**
-
-  - To package single stack
-
-    ```shell
-    nx run <STACK_NAME>:build --stage=<STAGE_NAME>
-    ```
-
-  - To package stack affected by a change
-
-    ```shell
-    nx affected:build --stage=<STAGE_NAME>
-    ```
-
-  - To package all services
-
-    ```shell
-    nx run-many --target=build --stage=<STAGE_NAME>
-    ```
-
-- **Deploy stack to cloud**
-
-  - To deploy single stack
-
-    ```shell
-    nx run <STACK_NAME>:deploy --stage=<STAGE_NAME>
-    ```
-
-  - To deploy stack affected by a change
-
-    ```shell
-    nx affected:deploy --stage=<STAGE_NAME>
-    ```
-
-  - To deploy all services
-
-    ```shell
-    nx run-many --target=deploy --all --stage=<STAGE_NAME>
-    ```
-
-- **Remove stack from cloud**
-
-  - To remove single stack
-
-    ```shell
-    nx run <STACK_NAME>:remove --stage=<STAGE_NAME>
-    ```
-
-  - To remove stack affected by a change
-
-    ```shell
-    nx affected:remove --stage=<STAGE_NAME>
-    ```
-
-  - To remove all services
-
-    ```shell
-    nx run-many --target=remove --all --stage=<STAGE_NAME>
-    ```
-
-- **Run tests**
-
-  - To run tests in single stack
-
-    ```shell
-    nx run <STACK_NAME>:test --stage=<STAGE_NAME>
-    ```
-
-  - To run tests affected by a change
-
-    ```shell
-    nx affected:test --stage=<STAGE_NAME>
-    ```
-
-  - To run tests in all services
-
-    ```shell
-    nx run-many --target=test --all --stage=<STAGE_NAME>
-    ```
-
-- **Run offline / locally**
-
-  - To run offlline, configure `serverless-offline` plugin as documented [here](https://github.com/dherault/serverless-offline) and run below command
-
-    ```shell
-    nx run <STACK_NAME>:serve --stage=<STAGE_NAME>
-    ```
-
-- **Understand your workspace**
-
+  ```shell
+  yarn affected:build --stage <STAGE_NAME>
   ```
-  nx dep-graph
+
+- To package all services
+
+  ```shell
+  yarn all:build --stage <STAGE_NAME>
   ```
+
+**Deploying services**
+
+- To deploy single service
+
+  ```shell
+  yarn deploy <SERVICE_NAME> --stage <STAGE_NAME>
+  ```
+
+- To deploy serivces affected by a change
+
+  ```shell
+  yarn affected:deploy --stage <STAGE_NAME>
+  ```
+
+- To deploy all services
+
+  ```shell
+  yarn all:deploy --stage <STAGE_NAME>
+  ```
+
+**Removing deployed service**
+
+- To remove single service
+
+  ```shell
+  yarn undeploy <SERVICE_NAME> --stage <STAGE_NAME>
+  ```
+
+- To remove services affected by a change
+
+  ```shell
+  yarn affected:undeploy --stage <STAGE_NAME>
+  ```
+
+- To remove all services
+
+  ```shell
+  yarn all:undeploy --stage <STAGE_NAME>
+  ```
+
+**Run tests**
+
+- To run tests in single service
+
+  ```shell
+  yarn test <SERVICE_NAME>
+  ```
+
+- To run tests affected by a change
+
+  ```shell
+  yarn affected:test
+  ```
+
+- To run tests in all services
+
+  ```shell
+  nx run-many --target=test --all --stage=<STAGE_NAME>
+  ```
+
+**Run offline / locally**
+
+- To run a single service
+
+```shell
+yarn serve <SERVICE_NAME>
+```
+
+**Understand your workspace**
+
+```
+yarn dep-graph
+```
 
 ## Further help
 
 - Visit [Serverless Documentation](https://www.serverless.com/framework/docs/) to learn more about Serverless framework
 - Visit [Nx Documentation](https://nx.dev) to learn more about Nx dev toolkit
-- Why NX, not Lerna? Read [here](https://blog.nrwl.io/migrating-from-lerna-to-nx-better-dev-ergonomics-much-faster-build-times-da76ff14ccbb) from co-founder of Nx
-
-## Nx Cloud
-
-##### Computation Memoization in the Cloud
-
-​ Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times.
-
-​ Visit [Nx Cloud](https://nx.app/) to learn more and enable it
 
 ## Contribution
 
-Found an issue? feel free to raise an issue with information to reproduce.
-
-Pull requests are welcome to improve.
+Found an issue? Feel free to raise an issue with information to reproduce. Pull requests are welcome to improve.
 
 ## Support
 
-Like the template?
-
-<a href="https://www.buymeacoffee.com/sudokar" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
-
-Or, Add a star :star: to the repository
-
-Or, Simply use it :smiley:
+If you like this template, please go support [sudokar](https://github.com/sudokar) as this template would not have been possible without their original work. However, you can always leave this version a star ⭐. 😄
 
 ## Maintainer
 
-This template is authored and maintained by [sudokar](https://github.com/sudokar)
+This version of the template is authored and maintained by [dustinsgoodman](https://github.com/dustinsgoodman)
 
 ## License
 
