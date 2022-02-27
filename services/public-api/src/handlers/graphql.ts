@@ -13,6 +13,7 @@ export type ApolloServerContext = {
   context: Context;
 };
 
+// export for use in tests
 export const apolloServer = new ApolloServer({
   typeDefs,
   resolvers,
