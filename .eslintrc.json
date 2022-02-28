@@ -13,8 +13,8 @@
             "allow": [],
             "depConstraints": [
               {
-                "sourceTag": "stack",
-                "onlyDependOnLibsWithTags": ["stack", "lib"]
+                "sourceTag": "service",
+                "onlyDependOnLibsWithTags": ["service", "lib"]
               },
               {
                 "sourceTag": "lib",

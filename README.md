@@ -24,7 +24,7 @@ A template for a Serverless Framework microservices architecture based on the [n
 ## Whats Included
 
 - A template project layout using latest version of Nx and Servrless Framework
-- An easy to use workspace generator to generate a template/stack with Serverless Framework files and related Nx configuration
+- An easy to use workspace generator to generate a template/service with Serverless Framework files and related Nx configuration
 - Configured with a basic AWS provider that can be easily adopted to any cloud provider
 - Serverless Offline microservices architecture support
 
