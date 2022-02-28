@@ -41,6 +41,14 @@
         "command": "sls remove"
       }
     },
+    "analyze": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "cwd": "services/public-api",
+        "color": true,
+        "command": "sls package --analyze {args.function}"
+      }
+    },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
