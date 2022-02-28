@@ -8,6 +8,7 @@
     "build": "nx build",
     "deploy": "nx deploy",
     "undeploy": "nx remove",
+    "analyze": "nx analyze",
     "serve": "nx serve",
     "test": "nx test",
     "lint": "nx workspace-lint && nx lint",

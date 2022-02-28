@@ -31,6 +31,12 @@ export const addWorkspaceConfig = (
       remove: {
         ...buildRunCommandConfig(serviceRoot, 'sls remove'),
       },
+      analyze: {
+        ...buildRunCommandConfig(
+          serviceRoot,
+          'sls package --analyze {args.function}'
+        ),
+      },
       lint: {
         executor: '@nrwl/linter:eslint',
         options: {
