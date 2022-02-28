@@ -12,32 +12,32 @@ const buildRunCommandConfig = (dir: string, command: string) => ({
 export const addWorkspaceConfig = (
   host: Tree,
   projectName: string,
-  stackRoot: string
+  serviceRoot: string
 ) => {
   addProjectConfiguration(host, projectName, {
-    root: stackRoot,
+    root: serviceRoot,
     projectType: 'application',
-    sourceRoot: stackRoot + '/src',
+    sourceRoot: serviceRoot + '/src',
     targets: {
       build: {
-        ...buildRunCommandConfig(stackRoot, 'sls package'),
+        ...buildRunCommandConfig(serviceRoot, 'sls package'),
       },
       serve: {
-        ...buildRunCommandConfig(stackRoot, 'sls offline start'),
+        ...buildRunCommandConfig(serviceRoot, 'sls offline start'),
       },
       deploy: {
-        ...buildRunCommandConfig(stackRoot, 'sls deploy'),
+        ...buildRunCommandConfig(serviceRoot, 'sls deploy'),
       },
       remove: {
-        ...buildRunCommandConfig(stackRoot, 'sls remove'),
+        ...buildRunCommandConfig(serviceRoot, 'sls remove'),
       },
       lint: {
         executor: '@nrwl/linter:eslint',
         options: {
-          lintFilePatterns: [stackRoot + '/**/*.ts'],
+          lintFilePatterns: [serviceRoot + '/**/*.ts'],
         },
       },
     },
-    tags: ['stack'],
+    tags: ['service'],
   });
 };
