@@ -172,6 +172,16 @@ nx g @nrwl/node:lib <LIBRARY_NAME>
   nx run-many --target=test --all --stage=<STAGE_NAME>
   ```
 
+**Analyze function bundles**
+
+When building serverless applications, it's important to understand your memory footprint due to Lambda's memory settings as you can experience unexpected errors. As such, the following script can be used to understand the memory footprint of your individual functions:
+
+```shell
+yarn analyze <SERVICE_NAME> --function=<FUNCTION_NAME>
+```
+
+This will open the results in a new tab in your browser with the results using [esbuild visualizer](https://www.npmjs.com/package/esbuild-visualizer).
+
 **Run offline / locally**
 
 - To run a single service
