@@ -1,7 +1,7 @@
 import { addProjectConfiguration, Tree } from '@nrwl/devkit';
 
 const buildRunCommandConfig = (dir: string, command: string) => ({
-  executor: '@nrwl/workspace:run-commands',
+  executor: './tools/executors/workspace:run-command',
   options: {
     cwd: dir,
     color: true,
