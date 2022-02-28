@@ -1,11 +1,11 @@
 import { APIGatewayProxyEvent, Context, Callback } from 'aws-lambda';
-import { healthcheck } from './handler';
+import { handler } from './healthcheck';
 
 describe('healtcheck', () => {
   let subject;
 
   beforeAll(async () => {
-    subject = await healthcheck(
+    subject = await handler(
       {} as APIGatewayProxyEvent,
       {} as Context,
       {} as Callback

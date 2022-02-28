@@ -33,13 +33,23 @@
     "workspace-generator": "nx workspace-generator",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "codegen": "nx codegen"
   },
   "dependencies": {
+    "@graphql-tools/merge": "^8.2.3",
+    "apollo-server-lambda": "^3.6.3",
+    "graphql": "^16.3.0",
     "tslib": "^2.3.1"
   },
   "devDependencies": {
     "@aws-sdk/types": "^3.53.0",
+    "@graphql-codegen/cli": "^2.6.2",
+    "@graphql-codegen/introspection": "^2.1.1",
+    "@graphql-codegen/schema-ast": "^2.4.1",
+    "@graphql-codegen/typescript": "^2.4.5",
+    "@graphql-codegen/typescript-operations": "^2.3.2",
+    "@graphql-codegen/typescript-resolvers": "^2.5.2",
     "@jest/transform": "^27.5.1",
     "@nrwl/cli": "^13.8.3",
     "@nrwl/devkit": "^13.8.3",
@@ -60,6 +70,7 @@
     "esbuild-visualizer": "^0.3.1",
     "eslint": "^8.10.0",
     "eslint-config-prettier": "^8.4.0",
+    "graphql-schema-linter": "^2.0.1",
     "husky": "^7.0.4",
     "jest": "^27.5.1",
     "js-yaml": "^4.1.0",
@@ -84,6 +95,33 @@
     ],
     "*.{md,json,yml,yaml,html}": [
       "prettier --write"
+    ],
+    "*.graphql": [
+      "graphql-schema-linter src/**/*.graphql"
     ]
+  },
+  "graphql-schema-linter": {
+    "rules": [
+      "deprecations-have-a-reason",
+      "descriptions-are-capitalized",
+      "enum-values-all-caps",
+      "enum-values-have-descriptions",
+      "enum-values-sorted-alphabetically",
+      "fields-are-camel-cased",
+      "fields-have-descriptions",
+      "input-object-fields-sorted-alphabetically",
+      "input-object-values-are-camel-cased",
+      "input-object-values-have-descriptions",
+      "type-fields-sorted-alphabetically",
+      "types-are-capitalized",
+      "types-have-descriptions"
+    ],
+    "ignore": {
+      "types-have-descriptions": [
+        "Query",
+        "Mutation",
+        "Subscription"
+      ]
+    }
   }
 }

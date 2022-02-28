@@ -1,0 +1,19 @@
+overwrite: true
+schema: './src/schema/**/*.typedefs.ts'
+documents: null
+generates:
+  ./src/types/graphql.d.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-resolvers
+  ./src/schema/graphql.schema.json:
+    plugins:
+      - 'introspection'
+  ./src/schema/schema.graphql:
+    plugins:
+      - schema-ast
+    config:
+      includeDirectives: true
+      commentDescriptions: true
+      sort: true
