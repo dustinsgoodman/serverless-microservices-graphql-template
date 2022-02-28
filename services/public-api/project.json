@@ -17,7 +17,13 @@
         "cwd": "services/public-api",
         "color": true,
         "command": "sls offline start"
-      }
+      },
+      "dependsOn": [
+        {
+          "target": "codegen",
+          "projects": "self"
+        }
+      ]
     },
     "deploy": {
       "executor": "@nrwl/workspace:run-commands",
@@ -47,14 +53,20 @@
       "options": {
         "jestConfig": "services/public-api/jest.config.js",
         "passWithNoTests": true
-      }
+      },
+      "dependsOn": [
+        {
+          "target": "codegen",
+          "projects": "self"
+        }
+      ]
     },
     "codegen": {
       "executor": "@nrwl/workspace:run-commands",
       "options": {
         "cwd": "services/public-api",
         "color": true,
-        "command": "graphql-codegen"
+        "command": "graphql-codegen; yarn format"
       }
     }
   },
