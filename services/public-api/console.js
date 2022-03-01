@@ -2,7 +2,7 @@
 // const path = require('path');
 const repl = require('repl');
 
-console.log(__dirname``);
+console.log(__dirname);
 // const modelDir = path.join(__dirname, 'src', 'models');
 
 // const loadModels = (context) => {
