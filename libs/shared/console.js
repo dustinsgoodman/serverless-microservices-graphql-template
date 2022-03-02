@@ -1,21 +1,35 @@
-// const fs = require('fs');
+const fs = require('fs');
 const path = require('path');
 const repl = require('repl');
-const shared = require(path.join(__dirname, 'src'));
+
+function getAllFiles(dirPath, arrayOfFiles = []) {
+  const files = fs.readdirSync(dirPath);
+
+  files.forEach((file) => {
+    if (file === 'index.ts' || file.includes('test.ts')) {
+      return;
+    }
+
+    if (fs.statSync(dirPath + '/' + file).isDirectory()) {
+      arrayOfFiles = getAllFiles(dirPath + '/' + file, arrayOfFiles);
+    } else {
+      arrayOfFiles.push(path.join(__dirname, dirPath, '/', file));
+    }
+  });
+
+  return arrayOfFiles;
+}
 
 const loadFunctions = (context) => {
   Object.keys(require.cache).forEach((key) => {
     delete require.cache[key];
   });
 
-  Object.entries(shared).forEach(([key, value]) => {
-    context[key] = value;
+  const allFilePaths = getAllFiles('./src');
+  allFilePaths.forEach((filePath) => {
+    const fileName = filePath.split('/').pop().slice(0, -3);
+    context[fileName] = require(filePath);
   });
-
-  // fs.readdirSync(modelDir, 'utf8').forEach((name) => {
-  //   const filePath = path.join(modelDir, name);
-  //   context[name.slice(0, -3)] = require(filePath);
-  // });
 };
 
 const replServer = repl.start('app > ');
