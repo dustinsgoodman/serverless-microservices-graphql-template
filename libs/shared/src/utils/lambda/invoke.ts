@@ -10,7 +10,7 @@ import { readFileSync } from 'fs';
 const yaml = require('js-yaml');
 
 const serverlessCommon = yaml.load(
-  readFileSync('../../serverless.common.yml', 'utf8')
+  readFileSync(__dirname + '/../../../../../serverless.common.yml', 'utf8')
 );
 const PORTS = Object.entries(serverlessCommon.custom.ports).reduce(
   (acc, [serviceName, servicePorts]) => {
