@@ -1,48 +1,51 @@
-const fs = require('fs');
-const path = require('path');
 const repl = require('repl');
+let functionsMap = {};
 
-function getAllFiles(dirPath, arrayOfFiles = []) {
-  const files = fs.readdirSync(dirPath);
-
-  files.forEach((file) => {
-    if (file === 'index.ts' || file.includes('test.ts')) {
-      return;
-    }
-
-    if (fs.statSync(dirPath + '/' + file).isDirectory()) {
-      arrayOfFiles = getAllFiles(dirPath + '/' + file, arrayOfFiles);
-    } else {
-      arrayOfFiles.push(path.join(__dirname, dirPath, '/', file));
-    }
-  });
-
-  return arrayOfFiles;
+try {
+  functionsMap = require('./src');
+} catch (err) {
+  console.log(
+    'No src/index found. Using default node repl without any context injected.'
+  );
 }
 
-const loadFunctions = (context) => {
-  Object.keys(require.cache).forEach((key) => {
-    delete require.cache[key];
-  });
+const replServer = repl.start({
+  prompt: 'app > ',
+  useColors: true,
+});
 
-  const allFilePaths = getAllFiles('./src');
-  allFilePaths.forEach((filePath) => {
-    const fileName = filePath.split('/').pop().slice(0, -3);
-    context[fileName] = require(filePath);
-  });
-};
-
-const replServer = repl.start('app > ');
 replServer.setupHistory('./.node_repl_history', (err) => {
   console.error(err);
 });
-loadFunctions(replServer.context);
+
+Object.entries(functionsMap).forEach(([key, value]) => {
+  replServer.context[key] = value;
+});
 
 replServer.defineCommand('re', {
   help: 'Reload the models without resetting the environment',
   action() {
-    loadFunctions(replServer.context);
+    // bust require cache
+    Object.keys(require.cache).forEach((key) => {
+      delete require.cache[key];
+    });
+
+    // fetch map of functions to reload
+    try {
+      functionsMap = require('./src');
+    } catch (err) {
+      console.log(
+        'No src/index found. Using default node repl without any context injected.'
+      );
+    }
+    Object.entries(functionsMap).forEach(([key, value]) => {
+      replServer.context[key] = value;
+    });
+
+    // inform user that reload is complete
     console.log('reloaded!');
+
+    // reset the prompt
     this.displayPrompt();
   },
 });
