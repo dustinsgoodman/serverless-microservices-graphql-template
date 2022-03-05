@@ -1561,7 +1561,7 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@nrwl/cli@13.8.3", "@nrwl/cli@^13.8.3":
+"@nrwl/cli@13.8.3":
   version "13.8.3"
   resolved "https://registry.yarnpkg.com/@nrwl/cli/-/cli-13.8.3.tgz#3b8441aa0693cae0e0027700079998c73fe46dbd"
   integrity sha512-6+OTs9aF5GzZUSmPziCThdPw2yXqhEw6JjYjOU9OUMZP1+6nPv7mCZkl9W2f6LEm9hAWIxHC1DsUjzWhdL1VGQ==
@@ -1572,7 +1572,7 @@
     v8-compile-cache "2.3.0"
     yargs-parser "20.0.0"
 
-"@nrwl/cli@13.8.4":
+"@nrwl/cli@13.8.4", "@nrwl/cli@^13.8.3":
   version "13.8.4"
   resolved "https://registry.yarnpkg.com/@nrwl/cli/-/cli-13.8.4.tgz#0e212ae9501142f3cb6ca10c0df6ae1b9c68e97e"
   integrity sha512-B+tuY7HJFS2TNMTZ3wWI7mGbXaWa84wznO6ChcOPkAr7GFrlpg+UbH0bspL1ajrCRGoUqbmiifrmoLslNr+HZg==
@@ -1625,7 +1625,7 @@
     "@swc/core-linux-x64-gnu" "^1.2.136"
     "@swc/core-linux-x64-musl" "^1.2.136"
 
-"@nrwl/jest@13.8.3", "@nrwl/jest@^13.8.3":
+"@nrwl/jest@13.8.3":
   version "13.8.3"
   resolved "https://registry.yarnpkg.com/@nrwl/jest/-/jest-13.8.3.tgz#ae51a45636d0e902626e1704159ab80a076a2e94"
   integrity sha512-9w+eRoRvYF6+Jz6IetnVeLb/NV62KQHC6ipvMik8nLeRp7DS34KDbCHys2MlZOVKk/I6vrbmLEDkrvVP8XIFsg==
@@ -1642,7 +1642,7 @@
     rxjs "^6.5.4"
     tslib "^2.3.0"
 
-"@nrwl/jest@13.8.4":
+"@nrwl/jest@13.8.4", "@nrwl/jest@^13.8.3":
   version "13.8.4"
   resolved "https://registry.yarnpkg.com/@nrwl/jest/-/jest-13.8.4.tgz#da2c69ed69bc103b57a06b196d5459f21dd09430"
   integrity sha512-R6SvlmbXC+bi8XI+RNoS3Wzurb+Dwz2V3M/XI3ydsaGbEB8+jX+U8JEvLL+JxcKDn5Ewz3OumeEyhOuvAghokw==
@@ -1659,7 +1659,7 @@
     rxjs "^6.5.4"
     tslib "^2.3.0"
 
-"@nrwl/linter@13.8.3", "@nrwl/linter@^13.8.3":
+"@nrwl/linter@13.8.3":
   version "13.8.3"
   resolved "https://registry.yarnpkg.com/@nrwl/linter/-/linter-13.8.3.tgz#b835ccf18ae1854287a06985a4aa0703d30f0c3c"
   integrity sha512-1C60ic0VwHrTPEMbUkDmu5e5hHRL6/XORA6hKiKDAhSYczPX9qNdTHuCaS0paSHRfc0YT4s20/jC/gtqy+UbEA==
@@ -1670,7 +1670,7 @@
     tmp "~0.2.1"
     tslib "^2.3.0"
 
-"@nrwl/linter@13.8.4":
+"@nrwl/linter@13.8.4", "@nrwl/linter@^13.8.3":
   version "13.8.4"
   resolved "https://registry.yarnpkg.com/@nrwl/linter/-/linter-13.8.4.tgz#d9f79c358688d9f82bf0c80a3fce90a1f2b92401"
   integrity sha512-EOLgbfsYZhAVLMvpsWjEISm7HNDE4DdOIm4oOWv41YKLdENIFbfVTLEtBKEOeWjUIJrLYv4H/nSnPBFB+as5zA==
@@ -1780,7 +1780,7 @@
     yargs "15.4.1"
     yargs-parser "20.0.0"
 
-"@nrwl/workspace@13.8.4", "@nrwl/workspace@^13.8.3":
+"@nrwl/workspace@13.8.4", "@nrwl/workspace@^13.8.4":
   version "13.8.4"
   resolved "https://registry.yarnpkg.com/@nrwl/workspace/-/workspace-13.8.4.tgz#d37dbbaf6719a7acf7b69f2cce952d8faac10b4c"
   integrity sha512-mhR0d4u6D4P/btwIGUYrvf8ipjij9lKZUl2c+1n9vE+VjzK35+8HGNc4S/mfq03H+EKLSf+zjZWyM2tW4cPF2w==
