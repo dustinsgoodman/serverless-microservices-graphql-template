@@ -1,4 +1,4 @@
-# serverless-template
+# Serverless Micoservices w/ GraphQL Template
 
 [![serverless](http://public.serverless.com/badges/v3.svg)](http://www.serverless.com)
 [![](https://img.shields.io/badge/monorepo-Nx-blue)](https://nx.dev/)
