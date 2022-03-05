@@ -1,7 +1,7 @@
-# shared
+# shared Library
 
-This library was generated with [Nx](https://nx.dev).
+This contains helpers used in other areas of the project including:
 
-## Running unit tests
-
-Run `nx test shared` to execute the unit tests via [Jest](https://jestjs.io).
+- API wrappers
+- Helper functions
+- Utility functions and wrappers
