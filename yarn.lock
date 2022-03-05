@@ -1702,7 +1702,7 @@
     tslib "^2.3.0"
     yargs-parser "20.0.0"
 
-"@nrwl/tao@13.8.4", "@nrwl/tao@^13.8.3":
+"@nrwl/tao@13.8.4", "@nrwl/tao@^13.8.4":
   version "13.8.4"
   resolved "https://registry.yarnpkg.com/@nrwl/tao/-/tao-13.8.4.tgz#aac8ebc00c8b1227188edbc3f5a04b0ba3ad9ff0"
   integrity sha512-6ER6Zn5s5LVT+4TX1E5rVWY+7ewUpRTfmRa9aIw7fSVkoEqgU+oiTfFuBZtJJ9VdlMRCGMCFQt/ijmG88mJMiw==
