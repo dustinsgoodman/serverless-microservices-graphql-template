@@ -4,7 +4,7 @@
   "sourceRoot": "services/background-jobs/src",
   "targets": {
     "build": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "./tools/executors/workspace:run-command",
       "options": {
         "cwd": "services/background-jobs",
         "color": true,
@@ -12,7 +12,7 @@
       }
     },
     "serve": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "./tools/executors/workspace:run-command",
       "options": {
         "cwd": "services/background-jobs",
         "color": true,
@@ -20,7 +20,7 @@
       }
     },
     "deploy": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "./tools/executors/workspace:run-command",
       "options": {
         "cwd": "services/background-jobs",
         "color": true,
@@ -28,7 +28,7 @@
       }
     },
     "remove": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "./tools/executors/workspace:run-command",
       "options": {
         "cwd": "services/background-jobs",
         "color": true,
@@ -36,7 +36,7 @@
       }
     },
     "analyze": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "./tools/executors/workspace:run-command",
       "options": {
         "cwd": "services/background-jobs",
         "color": true,
@@ -55,6 +55,14 @@
       "options": {
         "jestConfig": "services/background-jobs/jest.config.js",
         "passWithNoTests": true
+      }
+    },
+    "console": {
+      "executor": "./tools/executors/workspace:run-command",
+      "options": {
+        "cwd": "services/public-api",
+        "color": true,
+        "command": "node --experimental-repl-await ./console.js"
       }
     }
   },
