@@ -78,7 +78,7 @@
     "js-yaml": "^4.1.0",
     "lint-staged": "^12.3.4",
     "prettier": "^2.5.1",
-    "serverless": "^3.7.1",
+    "serverless": "^3.10.2",
     "serverless-analyze-bundle-plugin": "^1.1.0",
     "serverless-esbuild": "^1.25.0",
     "serverless-offline": "^8.5.0",
