@@ -24,25 +24,19 @@ provider:
   region: ${opt:region, 'us-east-1'}
 
 functions:
-  healthcheck:
-    handler: handler.healthcheck
-    events:
-      - httpApi:
-          path: /healthcheck
-          method: get
-  process:
-    handler: handler.process
+  demo:
+    handler: handlers/demo.handler
     events:
       - sqs:
-          queueName: TestQueue
+          queueName: DemoQueue
           arn:
             Fn::GetAtt:
-              - TestQueue
+              - DemoQueue
               - Arn
 
 resources:
   Resources:
-    TestQueue:
+    DemoQueue:
       Type: AWS::SQS::Queue
       Properties:
-        QueueName: TestQueue
+        QueueName: DemoQueue
