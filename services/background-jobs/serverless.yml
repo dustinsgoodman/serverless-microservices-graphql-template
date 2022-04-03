@@ -30,3 +30,19 @@ functions:
       - httpApi:
           path: /healthcheck
           method: get
+  process:
+    handler: handler.process
+    events:
+      - sqs:
+          queueName: TestQueue
+          arn:
+            Fn::GetAtt:
+              - TestQueue
+              - Arn
+
+resources:
+  Resources:
+    TestQueue:
+      Type: AWS::SQS::Queue
+      Properties:
+        QueueName: TestQueue
