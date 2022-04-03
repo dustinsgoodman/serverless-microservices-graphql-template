@@ -14,7 +14,7 @@
             "depConstraints": [
               {
                 "sourceTag": "service",
-                "onlyDependOnLibsWithTags": ["service", "lib"]
+                "onlyDependOnLibsWithTags": ["lib"]
               },
               {
                 "sourceTag": "lib",

@@ -40,11 +40,19 @@ jobs:
       - name: Linting
         run: yarn nx run-many --target=lint --all
 
-      - name: Run tests
-        run: yarn nx run-many --target=test --all
+      - name: Create .env file
+        run: |
+          touch .env
+          echo IS_OFFLINE=$IS_OFFLINE >> .env
+          echo SLS_STAGE=$SLS_STAGE >> .env
+          echo DEMO_QUEUE_URL=$DEMO_QUEUE_URL >> .env
         env:
           IS_OFFLINE: ${{ secrets.IS_OFFLINE }}
           SLS_STAGE: ${{ secrets.SLS_STAGE }}
+          DEMO_QUEUE_URL: ${{ secrets.DEMO_QUEUE_URL }}
 
-      - name: Sls package
+      - name: Run tests
+        run: yarn nx run-many --target=test --all
+
+      - name: Run sls package
         run: yarn nx run-many --target=build --all --stage=ci

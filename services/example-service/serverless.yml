@@ -1,9 +1,8 @@
-service: background-jobs
+service: example-service
 plugins:
   - serverless-s3-remover
   - serverless-esbuild
   - serverless-analyze-bundle-plugin
-  - serverless-offline-sqs
   - serverless-offline
 frameworkVersion: '3'
 useDotenv: true
@@ -22,21 +21,13 @@ provider:
   runtime: nodejs14.x
   stage: ${opt:stage, 'dev'}
   region: ${opt:region, 'us-east-1'}
+  environment:
+    DEMO_QUEUE_URL: ${env:DEMO_QUEUE_URL}
 
 functions:
-  demo:
-    handler: handlers/demo.handler
+  generateDemoJobs:
+    handler: handlers/generateDemoJob.handler
     events:
-      - sqs:
-          queueName: DemoQueue
-          arn:
-            Fn::GetAtt:
-              - DemoQueue
-              - Arn
-
-resources:
-  Resources:
-    DemoQueue:
-      Type: AWS::SQS::Queue
-      Properties:
-        QueueName: DemoQueue
+      - httpApi:
+          path: /generateDemoJob
+          method: get

@@ -59,6 +59,7 @@ The original template is phenomenal, but I was aiming for some additional custom
 ├── .nvmrc
 ├── .prettierignore
 ├── .prettierrc
+|-- docker-compose.yml
 ```
 
 ## Prerequisites
@@ -78,6 +79,26 @@ The original template is phenomenal, but I was aiming for some additional custom
 
 ```shell
 yarn
+```
+
+**Setup and run infrastructure**
+
+All needed services, such as databases, are managed via Docker. When working in this project, it is
+recommended that you start all the infrastructure. When you're not working on the project, you should
+stop all the infrastructure.
+
+```shell
+# Creates the docker container and starts it.
+yarn infrastructure:setup
+
+# Stops the docker container and deletes it.
+yarn infrastructure:teardown
+
+# Starts the docker container. Requires the container to exist.
+yarn infrastructure:start
+
+# Stops the docker container. Requires the container to exist.
+yarn infrastructure:stop
 ```
 
 **Generate a new service**

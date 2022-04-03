@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@serverless-template/aws": ["libs/aws/src/index.ts"],
       "@serverless-template/shared": ["libs/shared/src/index.ts"]
     }
   },

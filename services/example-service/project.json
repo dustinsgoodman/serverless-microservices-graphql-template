@@ -1,0 +1,62 @@
+{
+  "root": "services/example-service",
+  "projectType": "application",
+  "sourceRoot": "services/example-service/src",
+  "targets": {
+    "build": {
+      "executor": "./tools/executors/workspace:run-command",
+      "options": {
+        "cwd": "services/example-service",
+        "color": true,
+        "command": "sls package"
+      }
+    },
+    "serve": {
+      "executor": "./tools/executors/workspace:run-command",
+      "options": {
+        "cwd": "services/example-service",
+        "color": true,
+        "command": "sls offline start"
+      }
+    },
+    "deploy": {
+      "executor": "./tools/executors/workspace:run-command",
+      "options": {
+        "cwd": "services/example-service",
+        "color": true,
+        "command": "sls deploy"
+      }
+    },
+    "remove": {
+      "executor": "./tools/executors/workspace:run-command",
+      "options": {
+        "cwd": "services/example-service",
+        "color": true,
+        "command": "sls remove"
+      }
+    },
+    "analyze": {
+      "executor": "./tools/executors/workspace:run-command",
+      "options": {
+        "cwd": "services/example-service",
+        "color": true,
+        "command": "sls package --analyze {args.function}"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["services/example-service/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/services/example-service"],
+      "options": {
+        "jestConfig": "services/example-service/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": ["service"]
+}
