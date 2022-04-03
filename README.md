@@ -82,6 +82,7 @@ yarn
 ```
 
 **Setup and run infrastructure**
+
 All needed services, such as databases, are managed via Docker. When working in this project, it is
 recommended that you start all the infrastructure. When you're not working on the project, you should
 stop all the infrastructure.
