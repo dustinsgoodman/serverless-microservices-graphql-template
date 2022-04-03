@@ -8,7 +8,8 @@
       "options": {
         "cwd": "services/background-jobs",
         "color": true,
-        "command": "sls package"
+        "command": "sls package",
+        "exitCommand": "echo \"we out\""
       }
     },
     "serve": {
@@ -16,7 +17,9 @@
       "options": {
         "cwd": "services/background-jobs",
         "color": true,
-        "command": "sls offline start"
+        "parallel": true,
+        "command": "docker-compose up",
+        "exitCommand": "docker-compose stop"
       }
     },
     "deploy": {

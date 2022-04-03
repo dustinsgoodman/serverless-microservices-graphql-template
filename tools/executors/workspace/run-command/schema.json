@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "type": "object",
+  "cli": "nx",
+  "properties": {
+    "color": {
+      "type": "boolean",
+      "description": "Use colors when showing output of command.",
+      "default": false
+    },
+    "command": {
+      "type": "string",
+      "description": "Command to run in child process."
+    },
+    "cwd": {
+      "type": "string",
+      "description": "Current working directory of the commands. If it's not specified the commands will run in the workspace root, if a relative path is specified the commands will run in that path relative to the workspace root and if it's an absolute path the commands will run in that path."
+    },
+    "exitCommand": {
+      "type": "string",
+      "description": "Command to run during process shutdown."
+    }
+  },
+  "required": ["command"]
+}

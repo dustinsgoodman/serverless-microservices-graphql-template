@@ -203,6 +203,8 @@ var propKeys = [
   'args',
   'envFile',
   'outputPath',
+  'exitCommand',
+  'exitCommands',
 ];
 function default_1(options, context) {
   return __awaiter(this, void 0, void 0, function () {
@@ -219,6 +221,16 @@ function default_1(options, context) {
               'ERROR: Bad executor config for @nrwl/run-commands - "readyWhen" can only be used when "parallel=true".'
             );
           }
+          process.on('SIGINT', function () {
+            console.log('\nCaught SIGINT. Exiting...');
+            process.kill(process.pid, 'SIGTERM');
+            // console.log('running exit');
+            // await runExitComands(
+            //   normalized.exitCommands,
+            //   options.color,
+            //   calculateCwd(options.cwd, context)
+            // );
+          });
           _b.label = 2;
         case 2:
           _b.trys.push([2, 7, , 8]);
@@ -252,18 +264,35 @@ function default_1(options, context) {
   });
 }
 exports['default'] = default_1;
+function runExitComands(exitCommands, color, cwd) {
+  return __awaiter(this, void 0, void 0, function () {
+    var _i, exitCommands_1, c;
+    return __generator(this, function (_a) {
+      for (
+        _i = 0, exitCommands_1 = exitCommands;
+        _i < exitCommands_1.length;
+        _i++
+      ) {
+        c = exitCommands_1[_i];
+        createSyncProcess(c.command, color, cwd);
+      }
+      return [2 /*return*/];
+    });
+  });
+}
 function runInParallel(options, context) {
   return __awaiter(this, void 0, void 0, function () {
-    var procs, r, r, failed;
+    var cwd, procs, r, r, failed;
     return __generator(this, function (_a) {
       switch (_a.label) {
         case 0:
+          cwd = calculateCwd(options.cwd, context);
           procs = options.commands.map(function (c) {
             return createProcess(
               c.command,
               options.readyWhen,
               options.color,
-              calculateCwd(options.cwd, context)
+              cwd
             ).then(function (result) {
               return {
                 result: result,
@@ -332,6 +361,21 @@ function normalizeOptions(options) {
       (_a = c.forwardAllArgs) !== null && _a !== void 0 ? _a : true
     );
   });
+  if (options.exitCommand) {
+    options.exitCommands = [{ command: options.exitCommand }];
+  } else {
+    options.exitCommands = options.exitCommands.map(function (c) {
+      return typeof c === 'string' ? { command: c } : c;
+    });
+  }
+  options.exitCommands.forEach(function (c) {
+    var _a;
+    c.command = transformCommand(
+      c.command,
+      options.parsedArgs,
+      (_a = c.forwardAllArgs) !== null && _a !== void 0 ? _a : true
+    );
+  });
   return options;
 }
 function runSerially(options, context) {
@@ -361,7 +405,7 @@ function createProcess(command, readyWhen, color, cwd) {
      * Ensure the child process is killed when the parent exits
      */
     var processExitListener = function () {
-      return childProcess.kill();
+      childProcess.kill();
     };
     process.on('exit', processExitListener);
     process.on('SIGTERM', processExitListener);

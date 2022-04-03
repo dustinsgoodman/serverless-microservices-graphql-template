@@ -1,9 +1,14 @@
 {
   "executors": {
     "run-command": {
-      "implementation": "./impl",
-      "schema": "./schema.json",
+      "implementation": "./run-command/impl",
+      "schema": "./run-command/schema.json",
       "description": "Runs a command without capturing stdin/stdout/stderr"
+    },
+    "run-commands": {
+      "implementation": "./impl",
+      "schema": "./commands-schema.json",
+      "description": "Runs commands without capturing stdin/stdout/stderr"
     }
   }
 }

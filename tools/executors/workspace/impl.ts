@@ -41,6 +41,19 @@ export interface RunCommandsBuilderOptions extends Json {
   args?: string;
   envFile?: string;
   outputPath?: string;
+  exitCommand?: string;
+  exitCommands?: (
+    | {
+        command: string;
+        forwardAllArgs?: boolean;
+        /**
+         * description was added to allow users to document their commands inline,
+         * it is not intended to be used as part of the execution of the command.
+         */
+        description?: string;
+      }
+    | string
+  )[];
 }
 
 const propKeys = [
@@ -53,11 +66,17 @@ const propKeys = [
   'args',
   'envFile',
   'outputPath',
+  'exitCommand',
+  'exitCommands',
 ];
 
 export interface NormalizedRunCommandsBuilderOptions
   extends RunCommandsBuilderOptions {
   commands: {
+    command: string;
+    forwardAllArgs?: boolean;
+  }[];
+  exitCommands: {
     command: string;
     forwardAllArgs?: boolean;
   }[];
@@ -77,6 +96,17 @@ export default async function (
     );
   }
 
+  process.on('SIGINT', () => {
+    console.log('\nCaught SIGINT. Exiting...');
+    process.kill(process.pid, 'SIGTERM');
+    // console.log('running exit');
+    // await runExitComands(
+    //   normalized.exitCommands,
+    //   options.color,
+    //   calculateCwd(options.cwd, context)
+    // );
+  });
+
   try {
     const success = options.parallel
       ? await runInParallel(normalized, context)
@@ -92,20 +122,28 @@ export default async function (
   }
 }
 
+async function runExitComands(
+  exitCommands: NormalizedRunCommandsBuilderOptions['exitCommands'],
+  color: boolean,
+  cwd: string
+) {
+  for (const c of exitCommands) {
+    createSyncProcess(c.command, color, cwd);
+  }
+}
+
 async function runInParallel(
   options: NormalizedRunCommandsBuilderOptions,
   context: ExecutorContext
 ) {
+  const cwd = calculateCwd(options.cwd, context);
   const procs = options.commands.map((c) =>
-    createProcess(
-      c.command,
-      options.readyWhen,
-      options.color,
-      calculateCwd(options.cwd, context)
-    ).then((result) => ({
-      result,
-      command: c.command,
-    }))
+    createProcess(c.command, options.readyWhen, options.color, cwd).then(
+      (result) => ({
+        result,
+        command: c.command,
+      })
+    )
   );
 
   if (options.readyWhen) {
@@ -154,6 +192,22 @@ function normalizeOptions(
       c.forwardAllArgs ?? true
     );
   });
+
+  if (options.exitCommand) {
+    options.exitCommands = [{ command: options.exitCommand }];
+  } else {
+    options.exitCommands = options.exitCommands.map((c) =>
+      typeof c === 'string' ? { command: c } : c
+    );
+  }
+  (options as NormalizedRunCommandsBuilderOptions).exitCommands.forEach((c) => {
+    c.command = transformCommand(
+      c.command,
+      (options as NormalizedRunCommandsBuilderOptions).parsedArgs,
+      c.forwardAllArgs ?? true
+    );
+  });
+
   return options as any;
 }
 
@@ -186,7 +240,9 @@ function createProcess(
     /**
      * Ensure the child process is killed when the parent exits
      */
-    const processExitListener = () => childProcess.kill();
+    const processExitListener = () => {
+      childProcess.kill();
+    };
     process.on('exit', processExitListener);
     process.on('SIGTERM', processExitListener);
     childProcess.stdout.on('data', (data) => {

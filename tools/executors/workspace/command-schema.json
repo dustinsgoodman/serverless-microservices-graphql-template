@@ -10,6 +10,14 @@
     "cwd": {
       "type": "string",
       "description": "The working directory to run the command in"
+    },
+    "exitCommand": {
+      "type": "string",
+      "description": "The command to run after the main command have finished"
+    },
+    "exitCommands": {
+      "type": "array",
+      "description": "The commands to run after the main command have finished"
     }
   },
   "required": ["command"]
