@@ -12,3 +12,11 @@ custom:
   esbuild:
     packager: yarn
     plugins: ../../esbuild-plugins.js
+  serverless-offline-sqs:
+    autoCreate: true # create queue if it does not exist
+    apiVersion: '2012-11-05'
+    endpoint: http://0.0.0.0:9324
+    region: us-east-1
+    accessKeyId: root
+    secretAccessKey: root
+    skipCacheInvalidation: false

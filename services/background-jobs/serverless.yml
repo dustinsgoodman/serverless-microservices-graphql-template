@@ -3,6 +3,7 @@ plugins:
   - serverless-s3-remover
   - serverless-esbuild
   - serverless-analyze-bundle-plugin
+  - serverless-offline-sqs
   - serverless-offline
 frameworkVersion: '3'
 useDotenv: true
