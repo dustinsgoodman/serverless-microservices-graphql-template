@@ -2,6 +2,7 @@
   "version": 2,
   "projects": {
     "background-jobs": "services/background-jobs",
+    "example-service": "services/example-service",
     "public-api": "services/public-api",
     "shared": "libs/shared"
   }

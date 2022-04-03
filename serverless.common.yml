@@ -6,6 +6,9 @@ custom:
     background-jobs:
       httpPort: 3004
       lambdaPort: 3006
+    example-service:
+      httpPort: 3008
+      lambdaPort: 3010
   serverless-offline:
     httpPort: ${self:custom.ports.${self:service}.httpPort}
     lambdaPort: ${self:custom.ports.${self:service}.lambdaPort}
@@ -13,7 +16,7 @@ custom:
     packager: yarn
     plugins: ../../esbuild-plugins.js
   serverless-offline-sqs:
-    autoCreate: true # create queue if it does not exist
+    autoCreate: true
     apiVersion: '2012-11-05'
     endpoint: http://0.0.0.0:9324
     region: us-east-1
