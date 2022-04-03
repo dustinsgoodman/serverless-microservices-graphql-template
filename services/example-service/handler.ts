@@ -12,6 +12,7 @@ export const generateDemoJobs: APIGatewayProxyHandler = async () => {
   const sqs = new SQS({ apiVersion: '2012-11-05' });
   const resp = await sqs
     .sendMessage({
+      // TODO: refactor to use environment variables
       QueueUrl: 'http://localhost:9324/000000000000/DemoQueue',
       MessageBody: 'Hello World!',
     })
