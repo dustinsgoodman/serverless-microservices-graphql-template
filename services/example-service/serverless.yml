@@ -21,18 +21,13 @@ provider:
   runtime: nodejs14.x
   stage: ${opt:stage, 'dev'}
   region: ${opt:region, 'us-east-1'}
+  environment:
+    DEMO_QUEUE_URL: ${env:DEMO_QUEUE_URL}
 
 functions:
-  healthcheck:
-    handler: handler.healthcheck
-    events:
-      - httpApi:
-          path: /healthcheck
-          method: get
-
   generateDemoJobs:
-    handler: handler.generateDemoJobs
+    handler: handlers/generateDemoJob.handler
     events:
       - httpApi:
-          path: /generateDemoJobs
+          path: /generateDemoJob
           method: get
