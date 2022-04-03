@@ -59,7 +59,7 @@ The original template is phenomenal, but I was aiming for some additional custom
 ├── .nvmrc
 ├── .prettierignore
 ├── .prettierrc
-|-- docker-compose.yml
+├── docker-compose.yml
 ```
 
 ## Prerequisites
