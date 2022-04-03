@@ -36,7 +36,11 @@
     "help": "nx help",
     "prepare": "husky install",
     "codegen": "nx codegen",
-    "console": "nx console"
+    "console": "nx console",
+    "infrastructure:setup": "docker compose up -d",
+    "infrastructure:teardown": "docker compose down",
+    "infrastructure:start": "docker compose start",
+    "infrastructure:stop": "docker compose stop"
   },
   "dependencies": {
     "@graphql-tools/merge": "^8.2.3",
