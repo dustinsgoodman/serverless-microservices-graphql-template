@@ -29,3 +29,10 @@ functions:
       - httpApi:
           path: /healthcheck
           method: get
+
+  generateDemoJobs:
+    handler: handler.generateDemoJobs
+    events:
+      - httpApi:
+          path: /generateDemoJobs
+          method: get
