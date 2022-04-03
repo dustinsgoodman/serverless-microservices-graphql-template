@@ -4,5 +4,6 @@ module.exports = {
     '<rootDir>/services/background-jobs',
     '<rootDir>/libs/shared',
     '<rootDir>/services/example-service',
+    '<rootDir>/libs/aws',
   ],
 };
