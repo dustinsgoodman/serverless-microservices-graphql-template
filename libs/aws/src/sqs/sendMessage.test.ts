@@ -48,7 +48,7 @@ describe('sendMessage', () => {
     it('does not send the message to queue', () => {
       expect(subject).toEqual({
         success: false,
-        data: new Error('mocked rejection'),
+        data: 'mocked rejection',
       });
     });
   });
