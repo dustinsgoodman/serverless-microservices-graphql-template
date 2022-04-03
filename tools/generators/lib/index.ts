@@ -5,7 +5,6 @@ import {
   readProjectConfiguration,
   generateFiles,
   joinPathFragments,
-  getWorkspaceLayout,
   updateProjectConfiguration,
 } from '@nrwl/devkit';
 import { libraryGenerator } from '@nrwl/workspace/generators';
@@ -25,7 +24,7 @@ export default async function (tree: Tree, schema: Schema) {
     schema
   );
 
-  updateProject(tree, schema);
+  updateProject(tree, schema, libraryRoot);
 
   await formatFiles(tree);
   return () => {
@@ -34,19 +33,20 @@ export default async function (tree: Tree, schema: Schema) {
 }
 
 // See https://github.com/nrwl/nx/blob/efedd2eff78700a72bcc30bdf7450656860a4ffb/packages/node/src/generators/library/library.ts#L130-L156
-function updateProject(tree: Tree, options: Schema) {
+function updateProject(tree: Tree, options: Schema, libraryRoot: string) {
   const project = readProjectConfiguration(tree, options.name);
 
   project.targets = project.targets || {};
   project.targets.console = {
     executor: './tools/executors/workspace:run-command',
     options: {
-      cwd: 'libs/shared',
+      cwd: libraryRoot,
       color: true,
       command:
         'node --experimental-repl-await -r ts-node/register ./console.js',
     },
   };
+  project.tags = ['lib'];
 
   updateProjectConfiguration(tree, options.name, project);
 }
