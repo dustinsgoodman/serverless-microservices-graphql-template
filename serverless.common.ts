@@ -5,11 +5,11 @@ type Port = {
   httpPort: number;
   lambdaPort: number;
 };
-type PortsMap = {
+type PortConfig = {
   [k in Service]: Port;
 };
 
-export const PORTS: PortsMap = {
+export const PORTS: PortConfig = {
   'public-api': {
     httpPort: 3000,
     lambdaPort: 3002,

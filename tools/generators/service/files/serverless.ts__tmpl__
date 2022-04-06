@@ -1,7 +1,7 @@
 import type { Serverless } from 'serverless/aws';
 import { getCustomConfig } from '../../serverless.common';
 
-const serviceName = 'example-service';
+const serviceName = '<%= name %>';
 
 const serverlessConfiguration: Serverless = {
   service: serviceName,
@@ -24,18 +24,15 @@ const serverlessConfiguration: Serverless = {
     runtime: 'nodejs14.x',
     stage: "${opt:stage, 'dev'}",
     region: "${opt:region, 'us-east-1'}",
-    environment: {
-      DEMO_QUEUE_URL: '${env:DEMO_QUEUE_URL}',
-    },
   },
   functions: {
-    generateDemoJobs: {
-      handler: 'handlers/generateDemoJob.handler',
+    healthcheck: {
+      handler: 'handler.healthcheck',
       events: [
         {
           httpApi: {
             method: 'get',
-            path: '/generateDemoJob',
+            path: '/healthcheck',
           },
         },
       ],

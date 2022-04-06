@@ -1,8 +1,10 @@
 import type { Serverless } from 'serverless/aws';
 import { getCustomConfig } from '../../serverless.common';
 
+const serviceName = 'public-api';
+
 const serverlessConfiguration: Serverless = {
-  service: 'public-api',
+  service: serviceName,
   frameworkVersion: '3',
   plugins: [
     'serverless-s3-remover',
@@ -11,9 +13,7 @@ const serverlessConfiguration: Serverless = {
     'serverless-offline',
   ],
   useDotenv: true,
-  custom: function () {
-    return getCustomConfig(this.service);
-  },
+  custom: getCustomConfig(serviceName),
   package: {
     individually: true,
     patterns: ['handler.js', '!node_modules/**'],
