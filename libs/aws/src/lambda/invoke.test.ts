@@ -1,52 +1,54 @@
-import { Lambda } from 'aws-sdk';
+import { mockClient } from 'aws-sdk-client-mock';
+import { TextEncoder } from 'util';
+import { LambdaClient, InvokeCommand } from '@aws-sdk/client-lambda';
 import { Context, invoke } from './invoke';
-
-jest.mock('aws-sdk');
-
-const mockedLambda = Lambda as unknown as jest.Mock;
 
 describe('.invoke', () => {
   let subject;
-  let mockInvoke;
+  let invokeMock;
+  let payload;
 
   beforeAll(() => {
-    const mockPromise = jest.fn().mockResolvedValue({
-      Payload: JSON.stringify({
-        code: 'OK',
-        message: 'test successful',
-        statusCode: 200,
-      }),
-    });
-    mockInvoke = jest.fn(() => ({ promise: mockPromise }));
-    mockedLambda.mockImplementation(() => ({
-      invoke: mockInvoke,
-    }));
+    invokeMock = mockClient(LambdaClient);
+  });
+
+  afterAll(() => {
+    invokeMock.restore();
   });
 
   describe('when context not provided', () => {
     beforeAll(async () => {
+      payload = new TextEncoder().encode(
+        JSON.stringify({
+          body: JSON.stringify({ a: 1, b: 2 }),
+        })
+      );
+      invokeMock
+        .on(InvokeCommand, {
+          ClientContext: 'e30=',
+          FunctionName: 'public-api-dev-testFn',
+          InvocationType: 'RequestResponse',
+          Payload: payload,
+          LogType: 'Tail',
+        })
+        .resolves({
+          Payload: new TextEncoder().encode(
+            JSON.stringify({
+              code: 'OK',
+              message: 'test successful',
+              statusCode: 200,
+            })
+          ),
+        });
+
       subject = await invoke({
-        serviceName: 'test-api',
+        serviceName: 'public-api',
         functionName: 'testFn',
         payload: { a: 1, b: 2 },
       });
     });
 
-    test('calls Lambda#invoke with correct params', () => {
-      expect(mockInvoke).toHaveBeenCalledWith(
-        expect.objectContaining({
-          ClientContext: 'e30=',
-          FunctionName: 'test-api-dev-testFn',
-          InvocationType: 'RequestResponse',
-          Payload: JSON.stringify({
-            body: JSON.stringify({ a: 1, b: 2 }),
-          }),
-          LogType: 'Tail',
-        })
-      );
-    });
-
-    test('returns response from lambda', () => {
+    it('returns response from lambda', () => {
       expect(subject).toEqual({
         code: 'OK',
         message: 'test successful',
@@ -57,8 +59,34 @@ describe('.invoke', () => {
 
   describe('when context provided', () => {
     beforeAll(async () => {
+      payload = new TextEncoder().encode(
+        JSON.stringify({
+          headers: {
+            authorization: 'Bearer test',
+          },
+          body: JSON.stringify({ a: 1, b: 2 }),
+        })
+      );
+      invokeMock
+        .on(InvokeCommand, {
+          ClientContext: 'e30=',
+          FunctionName: 'public-api-dev-testFn',
+          InvocationType: 'RequestResponse',
+          Payload: payload,
+          LogType: 'Tail',
+        })
+        .resolves({
+          Payload: new TextEncoder().encode(
+            JSON.stringify({
+              code: 'OK',
+              message: 'test successful',
+              statusCode: 200,
+            })
+          ),
+        });
+
       subject = await invoke({
-        serviceName: 'test-api',
+        serviceName: 'public-api',
         functionName: 'testFn',
         payload: { a: 1, b: 2 },
         context: {
@@ -71,76 +99,7 @@ describe('.invoke', () => {
       });
     });
 
-    test('calls Lambda#invoke with correct params', () => {
-      expect(mockInvoke).toHaveBeenCalledWith(
-        expect.objectContaining({
-          ClientContext: 'e30=',
-          FunctionName: 'test-api-dev-testFn',
-          InvocationType: 'RequestResponse',
-          Payload: JSON.stringify({
-            headers: {
-              authorization: 'Bearer test',
-            },
-            body: JSON.stringify({ a: 1, b: 2 }),
-          }),
-          LogType: 'Tail',
-        })
-      );
-    });
-
-    test('returns response from lambda', () => {
-      expect(subject).toEqual({
-        code: 'OK',
-        message: 'test successful',
-        statusCode: 200,
-      });
-    });
-  });
-
-  describe('when IS_OFFLINE is false', () => {
-    const OLD_ENV = process.env;
-
-    beforeAll(async () => {
-      process.env = {
-        ...OLD_ENV,
-        IS_OFFLINE: 'false',
-      };
-      subject = await invoke({
-        serviceName: 'test-api',
-        functionName: 'testFn',
-        payload: { a: 1, b: 2 },
-        context: {
-          event: {
-            headers: {
-              Authorization: 'Bearer test',
-            },
-          },
-        } as unknown as Context,
-      });
-    });
-
-    afterAll(() => {
-      process.env = OLD_ENV;
-    });
-
-    test('calls Lambda#invoke with correct params', () => {
-      expect(mockInvoke).toHaveBeenCalledWith(
-        expect.objectContaining({
-          ClientContext: 'e30=',
-          FunctionName: 'test-api-dev-testFn',
-          InvocationType: 'RequestResponse',
-          Payload: JSON.stringify({
-            headers: {
-              authorization: 'Bearer test',
-            },
-            body: JSON.stringify({ a: 1, b: 2 }),
-          }),
-          LogType: 'Tail',
-        })
-      );
-    });
-
-    test('returns response from lambda', () => {
+    it('returns response from lambda', () => {
       expect(subject).toEqual({
         code: 'OK',
         message: 'test successful',

@@ -1,4 +1,5 @@
-import { Lambda } from 'aws-sdk';
+import { LambdaClient } from '@aws-sdk/client-lambda';
+// import { Lambda } from 'aws-sdk';
 
 export const getLambdaClient = (port: number) => {
   const { IS_OFFLINE, region } = process.env;
@@ -8,11 +9,9 @@ export const getLambdaClient = (port: number) => {
       ? `http://localhost:${port}`
       : `https://lambda.${process.env.REGION}.amazonaws.com`;
 
-  return new Lambda({
+  return new LambdaClient({
     apiVersion: '2031',
     region: region,
     endpoint: invokeUrl,
   });
 };
-
-export { Lambda };
