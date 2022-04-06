@@ -5,6 +5,7 @@
     "background-jobs": "services/background-jobs",
     "example-service": "services/example-service",
     "public-api": "services/public-api",
-    "shared": "libs/shared"
+    "shared": "libs/shared",
+    "utils": "libs/utils"
   }
 }

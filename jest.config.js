@@ -5,5 +5,6 @@ module.exports = {
     '<rootDir>/libs/shared',
     '<rootDir>/services/example-service',
     '<rootDir>/libs/aws',
+    '<rootDir>/libs/utils',
   ],
 };
