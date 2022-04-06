@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@serverless-template/aws": ["libs/aws/src/index.ts"],
-      "@serverless-template/shared": ["libs/shared/src/index.ts"]
+      "@serverless-template/serverless-common": ["serverless.common.ts"],
+      "@serverless-template/utils": ["libs/utils/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

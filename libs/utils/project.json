@@ -1,27 +1,27 @@
 {
-  "root": "libs/shared",
-  "sourceRoot": "libs/shared/src",
+  "root": "libs/utils",
+  "sourceRoot": "libs/utils/src",
   "projectType": "library",
   "targets": {
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/shared/**/*.ts"]
+        "lintFilePatterns": ["libs/utils/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/shared"],
+      "outputs": ["coverage/libs/utils"],
       "options": {
-        "jestConfig": "libs/shared/jest.config.js",
+        "jestConfig": "libs/utils/jest.config.js",
         "passWithNoTests": true
       }
     },
     "console": {
       "executor": "./tools/executors/workspace:run-command",
       "options": {
-        "cwd": "libs/shared",
+        "cwd": "libs/utils",
         "color": true,
         "command": "node --experimental-repl-await -r ts-node/register ./console.js"
       }

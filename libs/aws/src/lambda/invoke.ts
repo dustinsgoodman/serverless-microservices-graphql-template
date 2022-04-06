@@ -3,23 +3,12 @@ import {
   Context as LambdaContext,
   APIGatewayProxyEventHeaders,
 } from 'aws-lambda';
-import { Lambda } from '../../api';
-import { downcaseKeys } from '../object';
-import { readFileSync } from 'fs';
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const yaml = require('js-yaml');
-
-const serverlessCommon = yaml.load(
-  readFileSync(__dirname + '/../../../../../serverless.common.yml', 'utf8')
-);
-const PORTS = Object.entries(serverlessCommon.custom.ports).reduce(
-  (acc, [serviceName, servicePorts]) => {
-    const { lambdaPort } = servicePorts as { lambdaPort: number };
-    acc[serviceName] = lambdaPort;
-    return acc;
-  },
-  {}
-);
+import { InvokeCommand } from '@aws-sdk/client-lambda';
+import { TextEncoder, TextDecoder } from 'util';
+import type { Port, Service } from '@serverless-template/serverless-common';
+import { PORTS } from '@serverless-template/serverless-common';
+import { downcaseKeys } from '@serverless-template/utils';
+import { getLambdaClient } from './client';
 
 export type Context = {
   event?: APIGatewayProxyEvent;
@@ -28,7 +17,7 @@ export type Context = {
 };
 
 type InvokeParams = {
-  serviceName: string;
+  serviceName: Service;
   functionName: string;
   payload?: object;
   context?: Context;
@@ -37,20 +26,20 @@ type InvokeParams = {
 
 /**
  *
- * @param {String} serviceName - The name of the Service the function you wish to invoke belongs to, e.g. User-API
+ * @param {Service} serviceName - The name of the Service the function you wish to invoke belongs to, e.g. User-API
  * @param {String} functionName - The name of the Lambda function, version or alias - excluding the service name and stage. See: https://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html#API_Invoke_RequestSyntax
  * @param {Object} payload - The data to be provided to the Lambda as an input - will be JSON.stringified before being passed to Lambda
  * @param {Base64} context=null - The context object to be passed from Apollo Resolver
  * @param {String} [invocationType='RequestResponse'] - The type of invocation to carry out. See: https://docs.aws.amazon.com/lambda/latest/dg/API_Invoke.html#API_Invoke_RequestSyntax
  * @returns {Object} payload - The JSON data that is returned from the Lambda invocation
  */
-export const invoke = async ({
+export const invoke = async <ReturnType>({
   serviceName,
   functionName,
   payload,
   context = {},
   invocationType = 'RequestResponse',
-}: InvokeParams): Promise<object> => {
+}: InvokeParams): Promise<ReturnType | null> => {
   const combinedPayload = {
     ...context.event,
     body: JSON.stringify(payload),
@@ -65,7 +54,8 @@ export const invoke = async ({
 
   const combinedContext = {
     ...context.context,
-    userId: context.userId,
+    // insert other key context to pass along like userId
+    // userId: context.userId,
   };
 
   const stringifiedContext = JSON.stringify(combinedContext);
@@ -74,21 +64,23 @@ export const invoke = async ({
     ClientContext: processedContext,
     FunctionName: `${serviceName}-${process.env.SLS_STAGE}-${functionName}`,
     InvocationType: invocationType,
-    Payload: JSON.stringify(combinedPayload),
+    Payload: combinedPayload
+      ? new TextEncoder().encode(JSON.stringify(combinedPayload))
+      : undefined,
     LogType: 'Tail',
   };
+  const port = (PORTS[serviceName] as Port).lambdaPort;
 
-  const invokeUrl =
-    process.env.IS_OFFLINE === 'true'
-      ? `http://localhost:${PORTS[serviceName]}`
-      : `https://lambda.${process.env.REGION}.amazonaws.com`;
+  const command = new InvokeCommand(params);
+  const { Payload, FunctionError } = await getLambdaClient(port).send(command);
 
-  const lambda = new Lambda({
-    apiVersion: '2031',
-    region: process.env.REGION,
-    endpoint: invokeUrl,
-  });
+  if (FunctionError) {
+    throw new Error(FunctionError);
+  }
 
-  const { Payload } = await lambda.invoke(params).promise();
-  return JSON.parse(Payload as string);
+  if (Payload) {
+    return JSON.parse(new TextDecoder().decode(Payload));
+  }
+
+  return null;
 };

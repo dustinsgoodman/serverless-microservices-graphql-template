@@ -57,8 +57,12 @@ export const updateServerlessCommon = async (serviceName: string) => {
     const babelASTFile = parse(doc, DEFAULT_BABEL_OPTIONS);
 
     // push new service name into service type definition
-    const serviceType = babelASTFile.program.body[1] as TSTypeAliasDeclaration;
-    const serviceTypeUnion = serviceType.typeAnnotation as TSUnionType;
+    const serviceDeclaration = babelASTFile.program
+      .body[1] as ExportNamedDeclaration;
+    const serviceVariableDeclaration =
+      serviceDeclaration.declaration as TSTypeAliasDeclaration;
+    const serviceTypeUnion =
+      serviceVariableDeclaration.typeAnnotation as TSUnionType;
     serviceTypeUnion.types.push(tSLiteralType(stringLiteral(serviceName)));
 
     // push new ports into port config

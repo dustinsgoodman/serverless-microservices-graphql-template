@@ -1,7 +1,7 @@
 import type { Serverless } from 'serverless/aws';
 
-type Service = 'public-api' | 'background-jobs' | 'example-service';
-type Port = {
+export type Service = 'public-api' | 'background-jobs' | 'example-service';
+export type Port = {
   httpPort: number;
   lambdaPort: number;
 };
