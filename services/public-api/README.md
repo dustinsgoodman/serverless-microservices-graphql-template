@@ -26,7 +26,7 @@ This service will host the primary API Gateway for the rest of the application s
 
 ### Invoking other services in resolvers
 
-Most of your resolvers will probably invoke lambdas in other services. You can achieve this by using the `invoke` helper function from the `shared` lib. Your invocation will take the shape of:
+Most of your resolvers will probably invoke lambdas in other services. You can achieve this by using the `invoke` helper function from the `aws` lib. Your invocation will take the shape of:
 
 ```ts
 const data = await invoke({

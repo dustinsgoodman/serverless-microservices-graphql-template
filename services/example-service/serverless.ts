@@ -29,6 +29,9 @@ const serverlessConfiguration: Serverless = {
     },
   },
   functions: {
+    hello: {
+      handler: 'handlers/hello.handler',
+    },
     generateDemoJobs: {
       handler: 'handlers/generateDemoJob.handler',
       events: [
