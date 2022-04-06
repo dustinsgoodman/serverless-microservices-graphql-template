@@ -1,5 +1,5 @@
 import type { Serverless } from 'serverless/aws';
-import { custom } from '../../serverless.common';
+import { getCustomConfig } from '../../serverless.common';
 
 const serverlessConfiguration: Serverless = {
   service: 'background-jobs',
@@ -12,7 +12,9 @@ const serverlessConfiguration: Serverless = {
     'serverless-offline',
   ],
   useDotenv: true,
-  custom,
+  custom: function () {
+    return getCustomConfig(this.service);
+  },
   package: {
     individually: true,
     patterns: ['handler.js', '!node_modules/**'],
