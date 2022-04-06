@@ -736,6 +736,15 @@
     jsesc "^2.5.1"
     source-map "^0.5.0"
 
+"@babel/generator@^7.17.7":
+  version "7.17.7"
+  resolved "https://registry.yarnpkg.com/@babel/generator/-/generator-7.17.7.tgz#8da2599beb4a86194a3b24df6c085931d9ee45ad"
+  integrity sha512-oLcVCTeIFadUoArDTwpluncplrYBmTCCZZgXCbgNGvOBBiSDDK3eWO4b/+eOTli5tKv1lg+a5/NAXg+nTcei1w==
+  dependencies:
+    "@babel/types" "^7.17.0"
+    jsesc "^2.5.1"
+    source-map "^0.5.0"
+
 "@babel/helper-annotate-as-pure@^7.16.7":
   version "7.16.7"
   resolved "https://registry.yarnpkg.com/@babel/helper-annotate-as-pure/-/helper-annotate-as-pure-7.16.7.tgz#bb2339a7534a9c128e3102024c60760a3a7f3862"
@@ -900,6 +909,11 @@
   version "7.17.3"
   resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.17.3.tgz#b07702b982990bf6fdc1da5049a23fece4c5c3d0"
   integrity sha512-7yJPvPV+ESz2IUTPbOL+YkIGyCqOyNIzdguKQuJGnH7bg1WTIifuM21YqokFt/THWh1AkCRn9IgoykTRCBVpzA==
+
+"@babel/parser@^7.17.8":
+  version "7.17.8"
+  resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.17.8.tgz#2817fb9d885dd8132ea0f8eb615a6388cca1c240"
+  integrity sha512-BoHhDJrJXqcg+ZL16Xv39H9n+AqJ4pcDrQBGZN+wHxIysrLZ3/ECwCBUch/1zUNhnsXULcONU3Ei5Hmkfk6kiQ==
 
 "@babel/plugin-proposal-class-properties@^7.0.0":
   version "7.16.7"
@@ -3083,10 +3097,10 @@
     "@types/mime" "^1"
     "@types/node" "*"
 
-"@types/serverless@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@types/serverless/-/serverless-3.0.0.tgz#bf0c8c4ee43c8043d80b52c64a3a295ed573aab0"
-  integrity sha512-Vmo5pB2LolKrEtsvCBx1J+3Y5NjGlq0HyDyDOw9A7SchzsO6wqMlF5Cof9R4rqwH/zloXJjAHhqtJKp4ocxlDg==
+"@types/serverless@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@types/serverless/-/serverless-3.0.1.tgz#5afb772294c561cbdd15020467a10598e933e146"
+  integrity sha512-HqdKXULKs47ntFILOUdU18LLl0snKC+rpgHSy+zrXLmVU/E1Ef9w+VDwR+Opc//PpdT98SDCcQC6gcu7Gsy/DA==
 
 "@types/sinon@10.0.10":
   version "10.0.10"
