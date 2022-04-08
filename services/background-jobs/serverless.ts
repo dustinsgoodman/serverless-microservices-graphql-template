@@ -25,6 +25,21 @@ const serverlessConfiguration: Serverless = {
     runtime: 'nodejs14.x',
     stage: "${opt:stage, 'dev'}",
     region: "${opt:region, 'us-east-1'}",
+    environment: {
+      REGION: '${aws:region}',
+      SLS_STAGE: '${sls:stage}',
+    },
+    iam: {
+      role: {
+        statements: [
+          {
+            Effect: 'Allow',
+            Action: ['sqs:CreateQueue'],
+            Resource: 'arn:aws:sqs:*:*:*',
+          },
+        ],
+      },
+    },
   },
   functions: {
     demo: {

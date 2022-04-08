@@ -6,6 +6,7 @@ type Message = {
 };
 
 export const sendMessage = async (queue: QueueName, message: Message) => {
+  // TODO: update to use https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-sqs/classes/getqueueurlcommand.html
   const queueUrl = QUEUES_MAP[queue];
   const client = new SQSClient({
     endpoint: queueUrl,
