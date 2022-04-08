@@ -85,7 +85,7 @@
     "husky": "^7.0.4",
     "jest": "^27.5.1",
     "lint-staged": "^12.3.7",
-    "nx": "13.9.6",
+    "nx": "13.10.0",
     "prettier": "^2.5.1",
     "serverless": "^3.10.2",
     "serverless-analyze-bundle-plugin": "^1.1.0",
