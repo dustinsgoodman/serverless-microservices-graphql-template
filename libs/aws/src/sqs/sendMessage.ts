@@ -1,18 +1,17 @@
-import { SQSClient, SendMessageCommand } from '@aws-sdk/client-sqs';
-import { QueueName, QUEUES_MAP } from './queues';
+import { SendMessageCommand } from '@aws-sdk/client-sqs';
+import { getClient } from './client';
+import type { QueueName } from './client';
+import { getQueueUrl } from './getQueueUrl';
 
 type Message = {
   [key: string]: string | number | boolean | null;
 };
 
 export const sendMessage = async (queue: QueueName, message: Message) => {
-  // TODO: update to use https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-sqs/classes/getqueueurlcommand.html
-  const queueUrl = QUEUES_MAP[queue];
-  const client = new SQSClient({
-    endpoint: queueUrl,
-  });
+  const client = getClient();
+  const queueUrl = await getQueueUrl(queue);
   const command = new SendMessageCommand({
-    QueueUrl: queueUrl,
+    QueueUrl: queueUrl as string,
     MessageBody: JSON.stringify(message),
   });
 

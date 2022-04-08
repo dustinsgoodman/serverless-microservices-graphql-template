@@ -22,7 +22,7 @@ describe('sendMessage', () => {
       sqsMock.on(SendMessageCommand).resolves({
         MessageId: messageId,
       });
-      subject = await sendMessage('DEMO_QUEUE', {
+      subject = await sendMessage('DemoQueue', {
         message: 'Hello World',
       });
     });
@@ -40,7 +40,7 @@ describe('sendMessage', () => {
   describe('when invalid params are provided', () => {
     beforeAll(async () => {
       sqsMock.rejects('mocked rejection');
-      subject = await sendMessage('DEMO_QUEUE', {
+      subject = await sendMessage('DemoQueue', {
         message: 'Hello World',
       });
     });
