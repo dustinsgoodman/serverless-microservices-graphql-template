@@ -64,7 +64,7 @@
     "@jest/transform": "^27.5.1",
     "@nrwl/cli": "13.9.6",
     "@nrwl/devkit": "13.9.6",
-    "@nrwl/eslint-plugin-nx": "13.9.6",
+    "@nrwl/eslint-plugin-nx": "13.10.0",
     "@nrwl/jest": "13.9.6",
     "@nrwl/linter": "13.9.6",
     "@nrwl/node": "13.9.6",
