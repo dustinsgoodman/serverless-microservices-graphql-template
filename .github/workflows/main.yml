@@ -32,13 +32,13 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Generate service
-        run: yarn nx workspace-generator service test-service
+        run: yarn workspace-generator service test-service
 
       - name: Generate library
-        run: yarn nx g @nrwl/node:lib test-lib --tags lib
+        run: yarn workspace-generator lib test-lib
 
       - name: Linting
-        run: yarn nx run-many --target=lint --all
+        run: yarn lint:all
 
       - name: Create .env file
         run: |
@@ -52,7 +52,7 @@ jobs:
           DEMO_QUEUE_URL: ${{ secrets.DEMO_QUEUE_URL }}
 
       - name: Run tests
-        run: yarn nx run-many --target=test --all
+        run: yarn test:all
 
       - name: Run sls package
-        run: yarn nx run-many --target=build --all --stage=ci
+        run: yarn build:all
