@@ -11,3 +11,7 @@ updates:
       - dustinsgoodman
     labels:
       - dependency
+    ignore:
+      # @nrwl deps should always be updated by running `npx nx migrate @nrwl/workspace`
+      - dependency-name: '@nrwl/*'
+      - depedency-name: 'nx'
