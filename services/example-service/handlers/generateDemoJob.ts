@@ -2,7 +2,7 @@ import { APIGatewayProxyHandler } from 'aws-lambda';
 import { sendMessage } from '@serverless-template/aws';
 
 export const handler: APIGatewayProxyHandler = async () => {
-  const resp = await sendMessage('DEMO_QUEUE', {
+  const resp = await sendMessage('DemoQueue', {
     id: Math.ceil(Math.random() * 100),
     message: 'Hello World!',
   });

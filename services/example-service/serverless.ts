@@ -25,7 +25,19 @@ const serverlessConfiguration: Serverless = {
     stage: "${opt:stage, 'dev'}",
     region: "${opt:region, 'us-east-1'}",
     environment: {
-      DEMO_QUEUE_URL: '${env:DEMO_QUEUE_URL}',
+      REGION: '${aws:region}',
+      SLS_STAGE: '${sls:stage}',
+    },
+    iam: {
+      role: {
+        statements: [
+          {
+            Effect: 'Allow',
+            Action: ['sqs:SendMessage'],
+            Resource: 'arn:aws:sqs:*:*:*',
+          },
+        ],
+      },
     },
   },
   functions: {

@@ -1,3 +1,3 @@
-export type { QueueName } from './queues';
-export { QUEUES_MAP } from './queues';
+export type { QueueName } from './client';
+export { getClient } from './client';
 export { sendMessage } from './sendMessage';

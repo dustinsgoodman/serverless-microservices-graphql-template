@@ -1,5 +1,4 @@
 import { LambdaClient } from '@aws-sdk/client-lambda';
-// import { Lambda } from 'aws-sdk';
 
 export const getLambdaClient = (port: number) => {
   const { IS_OFFLINE, region } = process.env;

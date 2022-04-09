@@ -19,12 +19,28 @@
         "command": "sls offline start"
       }
     },
-    "deploy": {
+    "deploy-dev": {
       "executor": "./tools/executors/workspace:run-command",
       "options": {
-        "cwd": "services/background-jobs",
+        "cwd": "services/public-api",
         "color": true,
-        "command": "sls deploy"
+        "command": "sls deploy --stage dev"
+      }
+    },
+    "deploy-stage": {
+      "executor": "./tools/executors/workspace:run-command",
+      "options": {
+        "cwd": "services/public-api",
+        "color": true,
+        "command": "sls deploy --stage stage"
+      }
+    },
+    "deploy-prod": {
+      "executor": "./tools/executors/workspace:run-command",
+      "options": {
+        "cwd": "services/public-api",
+        "color": true,
+        "command": "sls deploy --stage prod"
       }
     },
     "remove": {

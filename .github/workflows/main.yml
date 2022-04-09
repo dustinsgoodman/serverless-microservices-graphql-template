@@ -22,6 +22,14 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - name: Create AWS profile
+        uses: Fooji/create-aws-profile-action@v1
+        with:
+          profile: default
+          region: us-east-1
+          key: xxx
+          secret: xxx
+
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -32,27 +40,25 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Generate service
-        run: yarn nx workspace-generator service test-service
+        run: yarn workspace-generator service test-service
 
       - name: Generate library
-        run: yarn nx g @nrwl/node:lib test-lib --tags lib
+        run: yarn workspace-generator lib test-lib
 
       - name: Linting
-        run: yarn nx run-many --target=lint --all
+        run: yarn lint:all
 
       - name: Create .env file
         run: |
           touch .env
           echo IS_OFFLINE=$IS_OFFLINE >> .env
           echo SLS_STAGE=$SLS_STAGE >> .env
-          echo DEMO_QUEUE_URL=$DEMO_QUEUE_URL >> .env
         env:
           IS_OFFLINE: ${{ secrets.IS_OFFLINE }}
           SLS_STAGE: ${{ secrets.SLS_STAGE }}
-          DEMO_QUEUE_URL: ${{ secrets.DEMO_QUEUE_URL }}
 
       - name: Run tests
-        run: yarn nx run-many --target=test --all
+        run: yarn test:all
 
       - name: Run sls package
-        run: yarn nx run-many --target=build --all --stage=ci
+        run: yarn build:all

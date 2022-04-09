@@ -1,5 +1,9 @@
 import { mockClient } from 'aws-sdk-client-mock';
-import { SQSClient, SendMessageCommand } from '@aws-sdk/client-sqs';
+import {
+  SQSClient,
+  SendMessageCommand,
+  GetQueueUrlCommand,
+} from '@aws-sdk/client-sqs';
 import { sendMessage } from './sendMessage';
 
 describe('sendMessage', () => {
@@ -8,6 +12,9 @@ describe('sendMessage', () => {
 
   beforeAll(() => {
     sqsMock = mockClient(SQSClient);
+    sqsMock.on(GetQueueUrlCommand).resolves({
+      QueueUrl: 'https://sqs.us-east-1.amazonaws.com/123456789012/test-queue',
+    });
   });
 
   afterAll(() => {
@@ -22,7 +29,7 @@ describe('sendMessage', () => {
       sqsMock.on(SendMessageCommand).resolves({
         MessageId: messageId,
       });
-      subject = await sendMessage('DEMO_QUEUE', {
+      subject = await sendMessage('DemoQueue', {
         message: 'Hello World',
       });
     });
@@ -39,8 +46,8 @@ describe('sendMessage', () => {
 
   describe('when invalid params are provided', () => {
     beforeAll(async () => {
-      sqsMock.rejects('mocked rejection');
-      subject = await sendMessage('DEMO_QUEUE', {
+      sqsMock.on(SendMessageCommand).rejects('mocked rejection');
+      subject = await sendMessage('DemoQueue', {
         message: 'Hello World',
       });
     });

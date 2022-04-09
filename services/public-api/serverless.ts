@@ -28,20 +28,25 @@ const serverlessConfiguration: Serverless = {
       // TODO: update to be more restrictive for real apps: https://www.serverless.com/framework/docs/providers/aws/events/http-api/#cors-setup
       cors: true,
     },
-    tracing: {
-      apiGateway: true,
-      lambda: true,
+    environment: {
+      REGION: '${aws:region}',
+      SLS_STAGE: '${sls:stage}',
     },
+
     iam: {
       role: {
         statements: [
           {
             Effect: 'Allow',
             Action: ['lambda:InvokeFunction'],
-            Resource: '*',
+            Resource: 'arn:aws:lambda:*:*:*',
           },
         ],
       },
+    },
+    tracing: {
+      apiGateway: true,
+      lambda: true,
     },
   },
   functions: {
