@@ -10,9 +10,10 @@ export const getClient = (): SQSClient => {
   }
 
   const config: SQSClientConfig = {};
-  if (process.env.IS_OFFLINE) {
+  if (process.env.IS_OFFLINE === 'true') {
     config.endpoint = 'http://localhost:9324';
   }
+
   cachedClient = new SQSClient(config);
   return cachedClient;
 };

@@ -11,7 +11,7 @@ export const sendMessage = async (queue: QueueName, message: Message) => {
   const client = getClient();
   const queueUrl = await getQueueUrl(queue);
   const command = new SendMessageCommand({
-    QueueUrl: queueUrl as string,
+    QueueUrl: queueUrl,
     MessageBody: JSON.stringify(message),
   });
 

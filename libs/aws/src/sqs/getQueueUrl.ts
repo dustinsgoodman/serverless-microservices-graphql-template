@@ -6,7 +6,11 @@ export const getQueueUrl = async (queue: QueueName): Promise<string> => {
   const command = new GetQueueUrlCommand({
     QueueName: queue,
   });
-  const { QueueUrl } = await getClient().send(command);
 
-  return QueueUrl;
+  try {
+    const { QueueUrl } = await getClient().send(command);
+    return QueueUrl;
+  } catch (error) {
+    throw new Error(error.message);
+  }
 };
