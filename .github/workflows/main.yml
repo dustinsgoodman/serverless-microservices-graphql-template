@@ -53,11 +53,9 @@ jobs:
           touch .env
           echo IS_OFFLINE=$IS_OFFLINE >> .env
           echo SLS_STAGE=$SLS_STAGE >> .env
-          echo DEMO_QUEUE_URL=$DEMO_QUEUE_URL >> .env
         env:
           IS_OFFLINE: ${{ secrets.IS_OFFLINE }}
           SLS_STAGE: ${{ secrets.SLS_STAGE }}
-          DEMO_QUEUE_URL: ${{ secrets.DEMO_QUEUE_URL }}
 
       - name: Run tests
         run: yarn test:all
