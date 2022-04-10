@@ -14,6 +14,84 @@ jobs:
       matrix:
         node-version: [14.x]
     steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+      - name: Configure Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14.x'
+      - name: Install packages
+        run: yarn install --frozen-lockfile
+
+  service-generator:
+    runs-on: ubuntu-latest
+    needs: ['setup']
+    strategy:
+      matrix:
+        node-version: [14.x]
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+      - name: Configure Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14.x'
+      - name: Install packages
+        run: yarn install --frozen-lockfile
+      - name: Generate service
+        run: yarn workspace-generator service test-service
+
+  lib-generator:
+    runs-on: ubuntu-latest
+    needs: ['setup']
+    strategy:
+      matrix:
+        node-version: [14.x]
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+      - name: Configure Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14.x'
+      - name: Install packages
+        run: yarn install --frozen-lockfile
+      - name: Generate library
+        run: yarn workspace-generator lib test-lib
+
+  lint:
+    runs-on: ubuntu-latest
+    needs: ['setup']
+    strategy:
+      matrix:
+        node-version: [14.x]
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+      - name: Configure Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14.x'
+      - name: Install packages
+        run: yarn install --frozen-lockfile
+      - name: Linting
+        run: yarn lint:all
+
+  test:
+    runs-on: ubuntu-latest
+    needs: ['setup']
+    strategy:
+      matrix:
+        node-version: [14.x]
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+      - name: Configure Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14.x'
+      - name: Install packages
+        run: yarn install --frozen-lockfile
       - name: Create AWS profile
         uses: Fooji/create-aws-profile-action@v1
         with:
@@ -29,52 +107,6 @@ jobs:
         env:
           IS_OFFLINE: ${{ secrets.IS_OFFLINE }}
           SLS_STAGE: ${{ secrets.SLS_STAGE }}
-      - name: Checkout Repo
-        uses: actions/checkout@v2
-      - name: Configure Node
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14.x'
-      - name: Install packages
-        run: yarn install --frozen-lockfile
-
-  service-generator:
-    runs-on: ubuntu-latest
-    needs: ['setup']
-    strategy:
-      matrix:
-        node-version: [14.x]
-    steps:
-      - name: Generate service
-        run: yarn workspace-generator service test-service
-
-  lib-generator:
-    runs-on: ubuntu-latest
-    needs: ['setup']
-    strategy:
-      matrix:
-        node-version: [14.x]
-    steps:
-      - name: Generate library
-        run: yarn workspace-generator lib test-lib
-
-  lint:
-    runs-on: ubuntu-latest
-    needs: ['setup']
-    strategy:
-      matrix:
-        node-version: [14.x]
-    steps:
-      - name: Linting
-        run: yarn lint:all
-
-  test:
-    runs-on: ubuntu-latest
-    needs: ['setup']
-    strategy:
-      matrix:
-        node-version: [14.x]
-    steps:
       - name: Run tests
         run: yarn test:all
 
@@ -85,5 +117,13 @@ jobs:
       matrix:
         node-version: [14.x]
     steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+      - name: Configure Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14.x'
+      - name: Install packages
+        run: yarn install --frozen-lockfile
       - name: Run sls package
         run: yarn build:all
