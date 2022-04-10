@@ -20,6 +20,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '14.x'
+          cache: 'yarn'
       - name: Install packages
         run: yarn install --frozen-lockfile
 
@@ -36,6 +37,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '14.x'
+          cache: 'yarn'
       - name: Install packages
         run: yarn install --frozen-lockfile
       - name: Generate service
@@ -54,6 +56,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '14.x'
+          cache: 'yarn'
       - name: Install packages
         run: yarn install --frozen-lockfile
       - name: Generate library
@@ -72,6 +75,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '14.x'
+          cache: 'yarn'
       - name: Install packages
         run: yarn install --frozen-lockfile
       - name: Linting
@@ -90,6 +94,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '14.x'
+          cache: 'yarn'
       - name: Install packages
         run: yarn install --frozen-lockfile
       - name: Create AWS profile
@@ -123,6 +128,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '14.x'
+          cache: 'yarn'
       - name: Install packages
         run: yarn install --frozen-lockfile
       - name: Run sls package
