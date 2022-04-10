@@ -16,13 +16,16 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v3
+
       - name: Configure Node
         uses: actions/setup-node@v3
         with:
           node-version: '14.x'
           cache: 'yarn'
+
       - name: Install packages
         run: yarn install --frozen-lockfile
+
       - name: Create AWS profile
         uses: Fooji/create-aws-profile-action@v1
         with:
@@ -30,6 +33,7 @@ jobs:
           region: us-east-1
           key: xxx
           secret: xxx
+
       - name: Create .env file
         run: |
           touch .env
@@ -38,13 +42,18 @@ jobs:
         env:
           IS_OFFLINE: ${{ secrets.IS_OFFLINE }}
           SLS_STAGE: ${{ secrets.SLS_STAGE }}
+
       - name: Generate service
         run: yarn workspace-generator service test-service
+
       - name: Generate library
         run: yarn workspace-generator lib test-lib
+
       - name: Linting
         run: yarn lint:all
+
       - name: Run tests
         run: yarn test:all
+
       - name: Run sls package
         run: yarn build:all
