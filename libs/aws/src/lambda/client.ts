@@ -1,16 +1,26 @@
-import { LambdaClient } from '@aws-sdk/client-lambda';
+import { LambdaClient, LambdaClientConfig } from '@aws-sdk/client-lambda';
+import type { Port, Service } from '@serverless-template/serverless-common';
+import { PORTS } from '@serverless-template/serverless-common';
 
-export const getLambdaClient = (port: number) => {
-  const { IS_OFFLINE, region } = process.env;
+let cachedClient: LambdaClient | null = null;
 
-  const invokeUrl =
-    IS_OFFLINE === 'true'
-      ? `http://localhost:${port}`
-      : `https://lambda.${process.env.REGION}.amazonaws.com`;
+export const getClient = (serviceName: Service) => {
+  if (cachedClient) {
+    return cachedClient;
+  }
 
-  return new LambdaClient({
+  const { IS_OFFLINE, REGION } = process.env;
+
+  const config: LambdaClientConfig = {
     apiVersion: '2031',
-    region: region,
-    endpoint: invokeUrl,
-  });
+    region: REGION,
+  };
+
+  if (IS_OFFLINE === 'true') {
+    const port = (PORTS[serviceName] as Port).lambdaPort;
+    config.endpoint = `http://localhost:${port}`;
+  }
+
+  cachedClient = new LambdaClient(config);
+  return cachedClient;
 };

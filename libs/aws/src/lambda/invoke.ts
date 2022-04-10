@@ -5,10 +5,9 @@ import {
 } from 'aws-lambda';
 import { InvokeCommand } from '@aws-sdk/client-lambda';
 import { TextEncoder, TextDecoder } from 'util';
-import type { Port, Service } from '@serverless-template/serverless-common';
-import { PORTS } from '@serverless-template/serverless-common';
+import type { Service } from '@serverless-template/serverless-common';
 import { downcaseKeys } from '@serverless-template/utils';
-import { getLambdaClient } from './client';
+import { getClient } from './client';
 
 export type Context = {
   event?: APIGatewayProxyEvent;
@@ -64,15 +63,12 @@ export const invoke = async <ReturnType>({
     ClientContext: processedContext,
     FunctionName: `${serviceName}-${process.env.SLS_STAGE}-${functionName}`,
     InvocationType: invocationType,
-    Payload: combinedPayload
-      ? new TextEncoder().encode(JSON.stringify(combinedPayload))
-      : undefined,
+    Payload: new TextEncoder().encode(JSON.stringify(combinedPayload)),
     LogType: 'Tail',
   };
-  const port = (PORTS[serviceName] as Port).lambdaPort;
 
   const command = new InvokeCommand(params);
-  const { Payload, FunctionError } = await getLambdaClient(port).send(command);
+  const { Payload, FunctionError } = await getClient(serviceName).send(command);
 
   if (FunctionError) {
     throw new Error(FunctionError);

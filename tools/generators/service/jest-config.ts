@@ -1,8 +1,12 @@
 import { Tree } from '@nrwl/devkit';
-import { jestProjectGenerator } from '@nrwl/jest';
+import { jestProjectGenerator, addPropertyToJestConfig } from '@nrwl/jest';
 import { JestProjectSchema } from '@nrwl/jest/src/generators/jest-project/schema';
 
-export const addJest = async (host: Tree, projectName: string) => {
+export const addJest = async (
+  host: Tree,
+  projectName: string,
+  serviceRoot: string
+) => {
   await jestProjectGenerator(host, <JestProjectSchema>{
     project: projectName,
     setupFile: 'none',
@@ -13,4 +17,24 @@ export const addJest = async (host: Tree, projectName: string) => {
     babelJest: false,
     skipFormat: true,
   });
+
+  addPropertyToJestConfig(
+    host,
+    `${serviceRoot}/jest.config.js`,
+    'collectCoverage',
+    true
+  );
+  addPropertyToJestConfig(
+    host,
+    `${serviceRoot}/jest.config.js`,
+    'coverageThreshold',
+    {
+      global: {
+        branches: 100,
+        functions: 100,
+        lines: 100,
+        statements: 100,
+      },
+    }
+  );
 };

@@ -8,6 +8,7 @@ import {
   updateProjectConfiguration,
 } from '@nrwl/devkit';
 import { libraryGenerator } from '@nrwl/workspace/generators';
+import { addPropertyToJestConfig } from '@nrwl/jest';
 
 type Schema = {
   readonly name: string;
@@ -25,6 +26,26 @@ export default async function (tree: Tree, schema: Schema) {
   );
 
   updateProject(tree, schema, libraryRoot);
+
+  addPropertyToJestConfig(
+    tree,
+    `${libraryRoot}/jest.config.js`,
+    'collectCoverage',
+    true
+  );
+  addPropertyToJestConfig(
+    tree,
+    `${libraryRoot}/jest.config.js`,
+    'coverageThreshold',
+    {
+      global: {
+        branches: 100,
+        functions: 100,
+        lines: 100,
+        statements: 100,
+      },
+    }
+  );
 
   await formatFiles(tree);
   return () => {
