@@ -26,7 +26,7 @@ export default async (host: Tree, schema: Schema) => {
 
   addWorkspaceConfig(host, schema.name, serviceRoot);
 
-  await addJest(host, schema.name);
+  await addJest(host, schema.name, serviceRoot);
 
   updateProject(host, schema, serviceRoot);
 
