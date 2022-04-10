@@ -43,12 +43,28 @@
         "command": "sls deploy --stage prod"
       }
     },
-    "remove": {
+    "remove-dev": {
       "executor": "./tools/executors/workspace:run-command",
       "options": {
-        "cwd": "services/background-jobs",
+        "cwd": "services/public-api",
         "color": true,
-        "command": "sls remove"
+        "command": "sls remove --stage dev"
+      }
+    },
+    "remove-stage": {
+      "executor": "./tools/executors/workspace:run-command",
+      "options": {
+        "cwd": "services/public-api",
+        "color": true,
+        "command": "sls remove --stage stage"
+      }
+    },
+    "remove-prod": {
+      "executor": "./tools/executors/workspace:run-command",
+      "options": {
+        "cwd": "services/public-api",
+        "color": true,
+        "command": "sls remove --stage prod"
       }
     },
     "analyze": {

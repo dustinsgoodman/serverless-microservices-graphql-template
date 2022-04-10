@@ -42,32 +42,7 @@ function updateProject(tree: Tree, options: Schema, serviceRoot: string) {
   const project = readProjectConfiguration(tree, options.name);
 
   project.targets = project.targets || {};
-  delete project.targets.deploy;
 
-  project.targets['deploy-dev'] = {
-    executor: './tools/executors/workspace:run-command',
-    options: {
-      cwd: serviceRoot,
-      color: true,
-      command: 'sls deploy --stage dev',
-    },
-  };
-  project.targets['deploy-stage'] = {
-    executor: './tools/executors/workspace:run-command',
-    options: {
-      cwd: serviceRoot,
-      color: true,
-      command: 'sls deploy --stage stage',
-    },
-  };
-  project.targets['deploy-prod'] = {
-    executor: './tools/executors/workspace:run-command',
-    options: {
-      cwd: serviceRoot,
-      color: true,
-      command: 'sls deploy --stage prod',
-    },
-  };
   project.tags = ['service'];
 
   updateProjectConfiguration(tree, options.name, project);

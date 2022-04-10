@@ -110,88 +110,62 @@ yarn workspace-generator service <SERVICE_NAME>
 **Generate a new library**
 
 ```shell
-nx g @nrwl/node:lib <LIBRARY_NAME>
+yarn workspace-generator lib <LIBRARY_NAME>
 ```
 
 **Packaging services**
 
-- To package single service
+```shell
+# Package a single service
+yarn build <SERVICE_NAME>
 
-  ```shell
-  yarn build <SERVICE_NAME> --stage <STAGE_NAME>
-  ```
 
-- To package services affected by a change
+# Package all services afffected by a change
+yarn affected:build
 
-  ```shell
-  yarn affected:build --stage <STAGE_NAME>
-  ```
 
-- To package all services
+# Package all services
+yarn all:build
+```
 
-  ```shell
-  yarn all:build --stage <STAGE_NAME>
-  ```
+Pass the `--stage <STAGE_NAME>` flag if you're creating a build for a specific environment.
 
 **Deploying services**
 
-- To deploy single service
+```shell
+# Deploy a single service to a stage
+yarn deploy:<stage> <SERVICE_NAME>
 
-  ```shell
-  yarn deploy <SERVICE_NAME> --stage <STAGE_NAME>
-  ```
+# Deploy all services to a stage
+yarn deploy:all:<stage>
+```
 
-- To deploy serivces affected by a change
-
-  ```shell
-  yarn affected:deploy --stage <STAGE_NAME>
-  ```
-
-- To deploy all services
-
-  ```shell
-  yarn all:deploy --stage <STAGE_NAME>
-  ```
+where `<stage>` is one of: `[dev, stage, prod]`.
 
 **Removing deployed service**
 
-- To remove single service
+```shell
+# Remove a single service from a stage
+yarn remove:<stage> <SERVICE_NAME>
 
-  ```shell
-  yarn undeploy <SERVICE_NAME> --stage <STAGE_NAME>
-  ```
+# Remove all services for a stage
+yarn remove:all:<stage>
+```
 
-- To remove services affected by a change
-
-  ```shell
-  yarn affected:undeploy --stage <STAGE_NAME>
-  ```
-
-- To remove all services
-
-  ```shell
-  yarn all:undeploy --stage <STAGE_NAME>
-  ```
+where `<stage>` is one of: `[dev, stage, prod]`.
 
 **Run tests**
 
-- To run tests in single service
+```shell
+# Run tests for a single service or library
+yarn test <SERVICE_OR_LIB_NAME>
 
-  ```shell
-  yarn test <SERVICE_NAME>
-  ```
+# Run tests for all services or libraries affected by a change
+yarn test:affected
 
-- To run tests affected by a change
-
-  ```shell
-  yarn affected:test
-  ```
-
-- To run tests in all services
-
-  ```shell
-  nx run-many --target=test --all --stage=<STAGE_NAME>
-  ```
+# Run all tests
+yarn test:all
+```
 
 **Analyze function bundles**
 
