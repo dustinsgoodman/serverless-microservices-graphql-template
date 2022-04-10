@@ -10,7 +10,7 @@ export const helloResolvers: Resolvers = {
         payload: { greeting },
         context,
       });
-      return resp || 'generic hello';
+      return resp;
     },
   },
 };
