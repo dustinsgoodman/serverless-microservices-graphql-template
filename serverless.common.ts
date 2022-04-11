@@ -34,6 +34,8 @@ export const getCustomConfig = (
   esbuild: {
     packager: 'yarn',
     plugins: '../../esbuild-plugins.js',
+    bundle: true,
+    minify: true,
   },
   'serverless-offline-sqs': {
     autoCreate: true,
