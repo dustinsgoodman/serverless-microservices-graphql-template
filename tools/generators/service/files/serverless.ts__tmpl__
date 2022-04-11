@@ -30,13 +30,7 @@ const serverlessConfiguration: Serverless = {
     },
     iam: {
       role: {
-        statements: [
-          {
-            Effect: 'Allow',
-            Action: ['sqs:SendMessage'],
-            Resource: 'arn:aws:sqs:*:*:*',
-          },
-        ],
+        statements: [],
       },
     },
   },
