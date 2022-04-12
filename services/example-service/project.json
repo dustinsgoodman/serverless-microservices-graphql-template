@@ -22,7 +22,7 @@
     "deploy-dev": {
       "executor": "./tools/executors/workspace:run-command",
       "options": {
-        "cwd": "services/public-api",
+        "cwd": "services/example-service",
         "color": true,
         "command": "sls deploy --stage dev"
       }
@@ -30,7 +30,7 @@
     "deploy-stage": {
       "executor": "./tools/executors/workspace:run-command",
       "options": {
-        "cwd": "services/public-api",
+        "cwd": "services/example-service",
         "color": true,
         "command": "sls deploy --stage stage"
       }
@@ -38,7 +38,7 @@
     "deploy-prod": {
       "executor": "./tools/executors/workspace:run-command",
       "options": {
-        "cwd": "services/public-api",
+        "cwd": "services/example-service",
         "color": true,
         "command": "sls deploy --stage prod"
       }
@@ -46,7 +46,7 @@
     "remove-dev": {
       "executor": "./tools/executors/workspace:run-command",
       "options": {
-        "cwd": "services/public-api",
+        "cwd": "services/example-service",
         "color": true,
         "command": "sls remove --stage dev"
       }
@@ -54,7 +54,7 @@
     "remove-stage": {
       "executor": "./tools/executors/workspace:run-command",
       "options": {
-        "cwd": "services/public-api",
+        "cwd": "services/example-service",
         "color": true,
         "command": "sls remove --stage stage"
       }
@@ -62,7 +62,7 @@
     "remove-prod": {
       "executor": "./tools/executors/workspace:run-command",
       "options": {
-        "cwd": "services/public-api",
+        "cwd": "services/example-service",
         "color": true,
         "command": "sls remove --stage prod"
       }
