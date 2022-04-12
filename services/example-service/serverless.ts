@@ -33,7 +33,7 @@ const serverlessConfiguration: Serverless = {
         statements: [
           {
             Effect: 'Allow',
-            Action: ['sqs:SendMessage'],
+            Action: ['sqs:SendMessage', 'sqs:GetQueueUrl'],
             Resource: 'arn:aws:sqs:*:*:*',
           },
         ],
