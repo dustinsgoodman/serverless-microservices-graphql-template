@@ -24,6 +24,8 @@ const serverlessConfiguration: Serverless = {
     runtime: 'nodejs14.x',
     stage: "${opt:stage, 'dev'}",
     region: "${opt:region, 'us-east-1'}",
+    memorySize: 512, // default: 1024MB
+    timeout: 900, // 15 minutes - this is the maximum allowed by Lambda
     environment: {
       REGION: '${aws:region}',
       SLS_STAGE: '${sls:stage}',

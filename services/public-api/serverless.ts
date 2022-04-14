@@ -23,6 +23,8 @@ const serverlessConfiguration: Serverless = {
     runtime: 'nodejs14.x',
     stage: "${opt:stage, 'dev'}",
     region: "${opt:region, 'us-east-1'}",
+    memorySize: 512, // default: 1024MB
+    timeout: 29, // default: max allowable for Gateway
     httpApi: {
       // TODO: update to be more restrictive for real apps: https://www.serverless.com/framework/docs/providers/aws/events/http-api/#cors-setup
       cors: true,
