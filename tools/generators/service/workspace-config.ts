@@ -25,11 +25,23 @@ export const addWorkspaceConfig = (
       serve: {
         ...buildRunCommandConfig(serviceRoot, 'sls offline start'),
       },
-      deploy: {
-        ...buildRunCommandConfig(serviceRoot, 'sls deploy'),
+      'deploy-dev': {
+        ...buildRunCommandConfig(serviceRoot, 'sls deploy --stage dev'),
       },
-      remove: {
-        ...buildRunCommandConfig(serviceRoot, 'sls remove'),
+      'deploy-stage': {
+        ...buildRunCommandConfig(serviceRoot, 'sls deploy --stage stage'),
+      },
+      'deploy-prod': {
+        ...buildRunCommandConfig(serviceRoot, 'sls deploy --stage prod'),
+      },
+      'remove-dev': {
+        ...buildRunCommandConfig(serviceRoot, 'sls remove --stage dev'),
+      },
+      'remove-stage': {
+        ...buildRunCommandConfig(serviceRoot, 'sls remove --stage stage'),
+      },
+      'remove-prod': {
+        ...buildRunCommandConfig(serviceRoot, 'sls remove --stage prod'),
       },
       analyze: {
         ...buildRunCommandConfig(

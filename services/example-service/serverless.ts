@@ -7,7 +7,6 @@ const serverlessConfiguration: Serverless = {
   service: serviceName,
   frameworkVersion: '3',
   plugins: [
-    'serverless-s3-remover',
     'serverless-esbuild',
     'serverless-analyze-bundle-plugin',
     'serverless-offline',
@@ -33,7 +32,7 @@ const serverlessConfiguration: Serverless = {
         statements: [
           {
             Effect: 'Allow',
-            Action: ['sqs:SendMessage'],
+            Action: ['sqs:SendMessage', 'sqs:GetQueueUrl'],
             Resource: 'arn:aws:sqs:*:*:*',
           },
         ],
