@@ -212,7 +212,7 @@ function createProcess(
 function createSyncProcess(command: string, color: boolean, cwd: string) {
   execSync(command, {
     env: processEnv(color),
-    stdio: [process.stdin, process.stdout, 'pipe'],
+    stdio: [process.stdin, process.stdout, process.stderr],
     maxBuffer: LARGE_BUFFER,
     cwd,
   });

@@ -387,7 +387,7 @@ function createProcess(command, readyWhen, color, cwd) {
 function createSyncProcess(command, color, cwd) {
   (0, child_process_1.execSync)(command, {
     env: processEnv(color),
-    stdio: [process.stdin, process.stdout, 'pipe'],
+    stdio: [process.stdin, process.stdout, process.stderr],
     maxBuffer: exports.LARGE_BUFFER,
     cwd: cwd,
   });
