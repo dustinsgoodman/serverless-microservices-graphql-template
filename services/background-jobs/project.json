@@ -88,14 +88,6 @@
         "jestConfig": "services/background-jobs/jest.config.js",
         "passWithNoTests": true
       }
-    },
-    "console": {
-      "executor": "./tools/executors/workspace:run-command",
-      "options": {
-        "cwd": "services/background-jobs",
-        "color": true,
-        "command": "node --experimental-repl-await ./console.js"
-      }
     }
   },
   "tags": ["service"]
