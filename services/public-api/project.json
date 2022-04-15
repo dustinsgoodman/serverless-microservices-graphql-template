@@ -108,14 +108,6 @@
         "color": true,
         "command": "graphql-codegen; yarn format"
       }
-    },
-    "console": {
-      "executor": "./tools/executors/workspace:run-command",
-      "options": {
-        "cwd": "services/public-api",
-        "color": true,
-        "command": "node --experimental-repl-await ./console.js"
-      }
     }
   },
   "tags": ["service"]

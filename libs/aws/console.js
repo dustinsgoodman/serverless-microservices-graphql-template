@@ -15,7 +15,9 @@ const replServer = repl.start({
 });
 
 replServer.setupHistory('./.node_repl_history', (err) => {
-  console.error(err);
+  if (err) {
+    console.error(err);
+  }
 });
 
 Object.entries(functionsMap).forEach(([key, value]) => {
