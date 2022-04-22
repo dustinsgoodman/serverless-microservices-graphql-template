@@ -1,17 +1,14 @@
 module.exports = {
-  displayName: 'utils',
-  preset: '../../jest.preset.js',
+  displayName: 'public-api',
+
   globals: {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.spec.json',
     },
   },
-  transform: {
-    '^.+\\.[tj]sx?$': 'ts-jest',
-  },
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
+  testEnvironment: 'node',
   collectCoverage: true,
-  coverageDirectory: '../../coverage/libs/utils',
+  coverageDirectory: '../../coverage/services/public-api',
   coverageThreshold: {
     global: {
       branches: 100,
@@ -20,4 +17,5 @@ module.exports = {
       statements: 100,
     },
   },
+  preset: '../../jest.preset.ts',
 };

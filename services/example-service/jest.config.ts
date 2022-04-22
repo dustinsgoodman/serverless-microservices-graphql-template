@@ -1,6 +1,6 @@
 module.exports = {
-  displayName: 'background-jobs',
-  preset: '../../jest.preset.js',
+  displayName: 'example-service',
+
   globals: {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.spec.json',
@@ -8,7 +8,7 @@ module.exports = {
   },
   testEnvironment: 'node',
   collectCoverage: true,
-  coverageDirectory: '../../coverage/services/background-jobs',
+  coverageDirectory: '../../coverage/services/example-service',
   coverageThreshold: {
     global: {
       branches: 100,
@@ -17,4 +17,5 @@ module.exports = {
       statements: 100,
     },
   },
+  preset: '../../jest.preset.ts',
 };
