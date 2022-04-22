@@ -55,7 +55,7 @@
     "@graphql-tools/merge": "^8.2.7",
     "apollo-server-lambda": "^3.6.7",
     "graphql": "^16.3.0",
-    "tslib": "^2.3.1"
+    "tslib": "^2.4.0"
   },
   "devDependencies": {
     "@aws-sdk/types": "^3.53.0",
