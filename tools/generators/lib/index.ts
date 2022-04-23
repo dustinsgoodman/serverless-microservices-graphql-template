@@ -18,12 +18,10 @@ export default async function (tree: Tree, schema: Schema) {
   await libraryGenerator(tree, { name: schema.name });
   const libraryRoot = readProjectConfiguration(tree, schema.name).root;
 
-  generateFiles(
-    tree,
-    joinPathFragments(__dirname, './files'),
-    libraryRoot,
-    schema
-  );
+  generateFiles(tree, joinPathFragments(__dirname, './files'), libraryRoot, {
+    ...schema,
+    tmpl: '',
+  });
 
   updateProject(tree, schema, libraryRoot);
 
@@ -64,7 +62,7 @@ function updateProject(tree: Tree, options: Schema, libraryRoot: string) {
       cwd: libraryRoot,
       color: true,
       command:
-        'node --experimental-repl-await -r ts-node/register ./console.js',
+        'node --experimental-repl-await -r ts-node/register -r tsconfig-paths/register ./console.ts',
     },
   };
   project.tags = ['lib'];
