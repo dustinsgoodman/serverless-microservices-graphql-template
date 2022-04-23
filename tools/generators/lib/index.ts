@@ -64,7 +64,7 @@ function updateProject(tree: Tree, options: Schema, libraryRoot: string) {
       cwd: libraryRoot,
       color: true,
       command:
-        'node --experimental-repl-await -r ts-node/register ./console.js',
+        'node --experimental-repl-await -r ts-node/register -r tsconfig-paths/register ./console.ts',
     },
   };
   project.tags = ['lib'];
