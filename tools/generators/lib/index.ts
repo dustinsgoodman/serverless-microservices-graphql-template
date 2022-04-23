@@ -18,12 +18,10 @@ export default async function (tree: Tree, schema: Schema) {
   await libraryGenerator(tree, { name: schema.name });
   const libraryRoot = readProjectConfiguration(tree, schema.name).root;
 
-  generateFiles(
-    tree,
-    joinPathFragments(__dirname, './files'),
-    libraryRoot,
-    schema
-  );
+  generateFiles(tree, joinPathFragments(__dirname, './files'), libraryRoot, {
+    ...schema,
+    tmpl: '',
+  });
 
   updateProject(tree, schema, libraryRoot);
 
