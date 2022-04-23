@@ -76,7 +76,7 @@
     "@nrwl/linter": "14.0.1",
     "@nrwl/node": "14.0.1",
     "@nrwl/workspace": "14.0.1",
-    "@types/aws-lambda": "^8.10.93",
+    "@types/aws-lambda": "^8.10.95",
     "@types/jest": "27.4.1",
     "@types/node": "^17.0.25",
     "@types/serverless": "^3.12.0",
