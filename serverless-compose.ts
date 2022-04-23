@@ -1,4 +1,15 @@
-const composeConfiguration = {
+import type { Service } from './serverless.common';
+
+type ServerlessCompose = {
+  services: {
+    [serviceName in Service]: {
+      path: string;
+      dependsOn?: Service[];
+    };
+  };
+};
+
+const composeConfiguration: ServerlessCompose = {
   services: {
     'public-api': {
       path: 'services/public-api',
