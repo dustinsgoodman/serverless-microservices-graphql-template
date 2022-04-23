@@ -23,7 +23,7 @@
       "options": {
         "cwd": "libs/utils",
         "color": true,
-        "command": "node --experimental-repl-await -r ts-node/register ./console.js"
+        "command": "node --experimental-repl-await -r ts-node/register -r tsconfig-paths/register ./console.ts"
       }
     }
   },
