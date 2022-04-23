@@ -29,13 +29,13 @@ export default async function (tree: Tree, schema: Schema) {
 
   addPropertyToJestConfig(
     tree,
-    `${libraryRoot}/jest.config.js`,
+    `${libraryRoot}/jest.config.ts`,
     'collectCoverage',
     true
   );
   addPropertyToJestConfig(
     tree,
-    `${libraryRoot}/jest.config.js`,
+    `${libraryRoot}/jest.config.ts`,
     'coverageThreshold',
     {
       global: {

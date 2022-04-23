@@ -20,13 +20,13 @@ export const addJest = async (
 
   addPropertyToJestConfig(
     host,
-    `${serviceRoot}/jest.config.js`,
+    `${serviceRoot}/jest.config.ts`,
     'collectCoverage',
     true
   );
   addPropertyToJestConfig(
     host,
-    `${serviceRoot}/jest.config.js`,
+    `${serviceRoot}/jest.config.ts`,
     'coverageThreshold',
     {
       global: {

@@ -45,8 +45,8 @@ The original template is phenomenal, but I was aiming for some additional custom
 ├── libs/      # shared libraries
 ├── tools/
 ├── README.md
-├── jest.config.js
-├── jest.preset.js
+├── jest.config.ts
+├── jest.preset.ts
 ├── nx.json
 ├── package.json
 ├── serverless.common.yml  # shared serverless configuration
