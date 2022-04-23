@@ -14,7 +14,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/aws"],
       "options": {
-        "jestConfig": "libs/aws/jest.config.js",
+        "jestConfig": "libs/aws/jest.config.ts",
         "passWithNoTests": true
       }
     },

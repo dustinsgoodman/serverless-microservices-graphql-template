@@ -85,7 +85,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/services/example-service"],
       "options": {
-        "jestConfig": "services/example-service/jest.config.js",
+        "jestConfig": "services/example-service/jest.config.ts",
         "passWithNoTests": true
       }
     }

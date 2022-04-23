@@ -85,7 +85,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/services/background-jobs"],
       "options": {
-        "jestConfig": "services/background-jobs/jest.config.js",
+        "jestConfig": "services/background-jobs/jest.config.ts",
         "passWithNoTests": true
       }
     }

@@ -1,14 +1,17 @@
 module.exports = {
-  displayName: 'example-service',
-  preset: '../../jest.preset.js',
+  displayName: 'aws',
+
   globals: {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.spec.json',
     },
   },
-  testEnvironment: 'node',
+  transform: {
+    '^.+\\.[tj]sx?$': 'ts-jest',
+  },
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   collectCoverage: true,
-  coverageDirectory: '../../coverage/services/example-service',
+  coverageDirectory: '../../coverage/libs/aws',
   coverageThreshold: {
     global: {
       branches: 100,
@@ -17,4 +20,5 @@ module.exports = {
       statements: 100,
     },
   },
+  preset: '../../jest.preset.ts',
 };

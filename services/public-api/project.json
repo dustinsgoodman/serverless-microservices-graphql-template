@@ -91,7 +91,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/services/public-api"],
       "options": {
-        "jestConfig": "services/public-api/jest.config.js",
+        "jestConfig": "services/public-api/jest.config.ts",
         "passWithNoTests": true
       },
       "dependsOn": [
