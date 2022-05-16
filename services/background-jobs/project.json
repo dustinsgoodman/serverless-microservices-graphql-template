@@ -1,5 +1,4 @@
 {
-  "root": "services/background-jobs",
   "projectType": "application",
   "sourceRoot": "services/background-jobs/src",
   "targets": {

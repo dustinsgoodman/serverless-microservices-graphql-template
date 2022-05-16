@@ -1,5 +1,4 @@
 {
-  "root": "services/example-service",
   "projectType": "application",
   "sourceRoot": "services/example-service/src",
   "targets": {

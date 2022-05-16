@@ -1,5 +1,4 @@
 {
-  "root": "services/public-api",
   "projectType": "application",
   "sourceRoot": "services/public-api/src",
   "targets": {

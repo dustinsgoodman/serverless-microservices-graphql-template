@@ -1,5 +1,4 @@
 {
-  "root": "libs/aws",
   "sourceRoot": "libs/aws/src",
   "projectType": "library",
   "targets": {

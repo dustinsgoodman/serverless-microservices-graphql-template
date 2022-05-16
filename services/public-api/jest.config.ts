@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   displayName: 'public-api',
 
   globals: {
@@ -17,5 +17,5 @@ module.exports = {
       statements: 100,
     },
   },
-  preset: '../../jest.preset.ts',
+  preset: '../../jest.preset.js',
 };
