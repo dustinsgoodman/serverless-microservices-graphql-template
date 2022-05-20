@@ -53,7 +53,7 @@
     "@aws-sdk/client-lambda": "^3.90.0",
     "@aws-sdk/client-sqs": "^3.87.0",
     "@graphql-tools/merge": "^8.2.10",
-    "apollo-server-lambda": "^3.6.7",
+    "apollo-server-lambda": "^3.7.0",
     "graphql": "^16.5.0",
     "tslib": "^2.4.0"
   },
