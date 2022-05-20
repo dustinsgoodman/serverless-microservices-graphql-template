@@ -87,7 +87,7 @@
     "esbuild-visualizer": "^0.3.1",
     "eslint": "8.14.0",
     "eslint-config-prettier": "^8.5.0",
-    "graphql-schema-linter": "^2.0.1",
+    "graphql-schema-linter": "^3.0.0",
     "husky": "^8.0.1",
     "jest": "27.5.1",
     "lint-staged": "^12.4.1",
