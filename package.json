@@ -50,7 +50,7 @@
     "workspace-generator": "nx workspace-generator"
   },
   "dependencies": {
-    "@aws-sdk/client-lambda": "^3.90.0",
+    "@aws-sdk/client-lambda": "^3.112.0",
     "@aws-sdk/client-sqs": "^3.100.0",
     "@graphql-tools/merge": "^8.2.13",
     "apollo-server-lambda": "^3.8.1",
