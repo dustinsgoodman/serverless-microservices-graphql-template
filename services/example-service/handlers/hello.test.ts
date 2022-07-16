@@ -1,4 +1,3 @@
-import { APIGatewayProxyEvent, Context, Callback } from 'aws-lambda';
 import { handler } from './hello';
 
 describe('healtcheck', () => {
