@@ -64,7 +64,7 @@ The original template is phenomenal, but I was aiming for some additional custom
 
 ## Prerequisites
 
-- [Node.js 14.19.0](https://nodejs.org/) - [nvm](https://github.com/nvm-sh/nvm) recommended
+- [Node.js 16](https://nodejs.org/) - [nvm](https://github.com/nvm-sh/nvm) recommended
 - [Yarn](https://yarnpkg.com)
 - [Serverless Framework v3](https://serverless.com/)
 - 💅 Code format plugins
