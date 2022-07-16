@@ -21,7 +21,7 @@ const serverlessConfiguration: Serverless = {
   },
   provider: {
     name: 'aws',
-    runtime: 'nodejs14.x',
+    runtime: 'nodejs16.x',
     stage: "${opt:stage, 'dev'}",
     region: "${opt:region, 'us-east-1'}",
     memorySize: 512, // default: 1024MB

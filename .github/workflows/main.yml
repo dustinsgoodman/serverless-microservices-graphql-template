@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [14.x]
+        node-version: [16.x]
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v3
@@ -20,7 +20,7 @@ jobs:
       - name: Configure Node
         uses: actions/setup-node@v3
         with:
-          node-version: '14.x'
+          node-version: '16.x'
           cache: 'yarn'
 
       - name: Install packages
