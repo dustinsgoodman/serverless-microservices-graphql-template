@@ -6,6 +6,8 @@ const serviceName = 'public-api';
 const serverlessConfiguration: Serverless = {
   service: serviceName,
   frameworkVersion: '3',
+  // app: '<serverless dashboard app>',
+  // org: '<serverless dashboard org>',
   plugins: [
     'serverless-esbuild',
     'serverless-analyze-bundle-plugin',
@@ -21,6 +23,7 @@ const serverlessConfiguration: Serverless = {
   provider: {
     name: 'aws',
     runtime: 'nodejs16.x',
+    // profile: '<your profile>',
     stage: "${opt:stage, 'dev'}",
     region: "${opt:region, 'us-east-1'}",
     memorySize: 512, // default: 1024MB
