@@ -1815,10 +1815,17 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.16.7"
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.17.2":
+"@babel/runtime@^7.0.0":
   version "7.17.2"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.17.2.tgz#66f68591605e59da47523c631416b18508779941"
   integrity sha512-hzeyJyMA1YGdJTuWU0e/j4wKXrU4OMFvY2MSlaI9B7VQb0r5cxTE3EAIS2Q7Tn2RIcDkRvTA/v2JsAEhxe99uw==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
+"@babel/runtime@^7.18.6":
+  version "7.18.6"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.18.6.tgz#6a1ef59f838debd670421f8c7f2cbb8da9751580"
+  integrity sha512-t9wi7/AW6XtKahAe20Yw0/mMljKq0B1r2fPdvaAdV/KPDZewFXdaaa6K7lxmZBZ8FBNpCiAT6iHPmd6QO9bKfQ==
   dependencies:
     regenerator-runtime "^0.13.4"
 
@@ -10639,12 +10646,12 @@ serve-static@1.14.2:
     parseurl "~1.3.3"
     send "0.17.2"
 
-serverless-analyze-bundle-plugin@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/serverless-analyze-bundle-plugin/-/serverless-analyze-bundle-plugin-1.1.0.tgz#66f806d9de202062e2e13b76d190997590011aa3"
-  integrity sha512-gnyHMUrCi34nBAvJxEDgR2lJTZdn5KaOlUpr0wVbSAh93iRvfp1p/i2I67yU2S1uKfMWL4E1xRulbED7W6kdZw==
+serverless-analyze-bundle-plugin@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/serverless-analyze-bundle-plugin/-/serverless-analyze-bundle-plugin-1.2.0.tgz#16954c6a9078bd2f89685974cb7c677247edc2c7"
+  integrity sha512-ZKDh4oAZmjLiye6C0pYOf36K7Yxrq8jU35Kn05Zvu9bPLed83BIF80zmYIsHgz89DnvPK1az0d9rEArNw7zEtg==
   dependencies:
-    "@babel/runtime" "^7.17.2"
+    "@babel/runtime" "^7.18.6"
     check-node-version "^4.2.1"
 
 serverless-esbuild@^1.31.0:
