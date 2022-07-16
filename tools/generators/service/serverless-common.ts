@@ -91,6 +91,7 @@ export const updateServerlessCommon = async (serviceName: string) => {
     );
 
     // generate output code and write to file
+    // @ts-ignore: upstream types issue
     const updatedConfig = generate(babelASTFile).code;
     fs.writeFileSync('./serverless.common.ts', updatedConfig);
   } catch (e) {
