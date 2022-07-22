@@ -52,7 +52,7 @@
   "dependencies": {
     "@aws-sdk/client-lambda": "^3.131.0",
     "@aws-sdk/client-sqs": "^3.131.0",
-    "@graphql-tools/merge": "^8.2.13",
+    "@graphql-tools/merge": "^8.3.0",
     "apollo-server-lambda": "^3.8.1",
     "graphql": "^16.5.0",
     "tslib": "^2.4.0"
