@@ -19,6 +19,7 @@ export const apolloServer = new ApolloServer({
   resolvers,
   dataSources: () => ({}),
   context: {},
+  cache: 'bounded',
 });
 
 export const server = apolloServer.createHandler({
