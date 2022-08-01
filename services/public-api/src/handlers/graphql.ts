@@ -17,7 +17,12 @@ export type ApolloServerContext = {
 export const apolloServer = new ApolloServer({
   schema,
   dataSources: () => ({}),
-  context: {},
+  context: async ({ event, context }: ApolloServerContext) => ({
+    headers: event.headers,
+    functionName: context.functionName,
+    event: event,
+    context: context,
+  }),
   cache: 'bounded',
 });
 
