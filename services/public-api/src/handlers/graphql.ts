@@ -4,7 +4,7 @@ import {
   APIGatewayProxyEventHeaders,
   APIGatewayProxyEvent,
 } from 'aws-lambda';
-import { typeDefs, resolvers } from '../schema';
+import { schema } from '../schema';
 
 export type ApolloServerContext = {
   headers: APIGatewayProxyEventHeaders;
@@ -15,10 +15,14 @@ export type ApolloServerContext = {
 
 // export for use in tests
 export const apolloServer = new ApolloServer({
-  typeDefs,
-  resolvers,
+  schema,
   dataSources: () => ({}),
-  context: {},
+  context: async ({ event, context }: ApolloServerContext) => ({
+    headers: event.headers,
+    functionName: context.functionName,
+    event: event,
+    context: context,
+  }),
   cache: 'bounded',
 });
 

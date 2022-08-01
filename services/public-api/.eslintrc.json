@@ -1,5 +1,5 @@
 {
   "extends": "../../.eslintrc.json",
-  "ignorePatterns": ["!**/*", "src/types/graphql.d.ts"],
+  "ignorePatterns": ["!**/*", "src/types/graphql.ts"],
   "rules": {}
 }

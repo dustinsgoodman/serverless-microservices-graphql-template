@@ -1,6 +1,6 @@
 import { handler } from './hello';
 
-describe('healtcheck', () => {
+describe('hello', () => {
   let subject;
 
   beforeAll(async () => {

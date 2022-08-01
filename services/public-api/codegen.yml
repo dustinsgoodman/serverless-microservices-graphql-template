@@ -1,8 +1,8 @@
 overwrite: true
-schema: './src/schema/**/*.typedefs.ts'
+schema: './src/schema/index.ts'
 documents: null
 generates:
-  ./src/types/graphql.d.ts:
+  ./src/types/graphql.ts:
     plugins:
       - typescript
       - typescript-operations
@@ -17,3 +17,6 @@ generates:
       includeDirectives: true
       commentDescriptions: true
       sort: true
+require:
+  - ts-node/register
+  - tsconfig-paths/register

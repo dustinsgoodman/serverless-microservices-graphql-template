@@ -1,4 +1,5 @@
 import { SQSClient, SQSClientConfig } from '@aws-sdk/client-sqs';
+import { isOffline } from '@serverless-template/utils';
 
 export type QueueName = 'DemoQueue';
 
@@ -10,7 +11,7 @@ export const getClient = (): SQSClient => {
   }
 
   const config: SQSClientConfig = {};
-  if (process.env.IS_OFFLINE === 'true') {
+  if (isOffline()) {
     config.endpoint = 'http://localhost:9324';
   }
 
