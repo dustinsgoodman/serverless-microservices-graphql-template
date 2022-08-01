@@ -1,6 +1,7 @@
 import { gql } from 'apollo-server-lambda';
 import { invoke } from '@serverless-template/aws';
 import { apolloServer } from '../../handlers/graphql';
+import { getContextConfig } from '../test-helpers';
 
 jest.mock('@serverless-template/aws');
 
@@ -18,7 +19,10 @@ describe('hello query', () => {
       }
     `;
     invokeMock.mockResolvedValue('Hello, World!');
-    subject = await apolloServer.executeOperation({ query: QUERY });
+    subject = await apolloServer.executeOperation(
+      { query: QUERY },
+      getContextConfig()
+    );
   });
 
   afterAll(() => {
