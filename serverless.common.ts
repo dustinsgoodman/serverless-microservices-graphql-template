@@ -25,25 +25,52 @@ export const PORTS: PortConfig = {
 };
 
 export const getCustomConfig = (
-  serviceName: Service
-): Serverless['custom'] => ({
-  'serverless-offline': {
-    httpPort: PORTS[serviceName].httpPort,
-    lambdaPort: PORTS[serviceName].lambdaPort,
-  },
-  esbuild: {
-    packager: 'yarn',
-    bundle: true,
-    minify: true,
-    sourcemap: true,
-  },
-  'serverless-offline-sqs': {
-    autoCreate: true,
-    apiVersion: '2012-11-05',
-    endpoint: 'http://0.0.0.0:9324',
-    region: 'us-east-1',
-    accessKeyId: 'root',
-    secretAccessKey: 'root',
-    skipCacheInvalidation: false,
-  },
-});
+  serviceName: Service,
+  customSettings: {
+    domain: {
+      name: string;
+      stage: string;
+      basePath: string;
+    };
+  } = {
+    domain: {
+      name: '',
+      stage: 'prod',
+      basePath: 'api',
+    },
+  }
+): Serverless['custom'] => {
+  return {
+    'serverless-offline': {
+      httpPort: PORTS[serviceName].httpPort,
+      lambdaPort: PORTS[serviceName].lambdaPort,
+    },
+    esbuild: {
+      packager: 'yarn',
+      bundle: true,
+      minify: true,
+      sourcemap: true,
+    },
+    'serverless-offline-sqs': {
+      autoCreate: true,
+      apiVersion: '2012-11-05',
+      endpoint: 'http://0.0.0.0:9324',
+      region: 'us-east-1',
+      accessKeyId: 'root',
+      secretAccessKey: 'root',
+      skipCacheInvalidation: false,
+    },
+    customDomain: {
+      domainName: `${customSettings.domain.name}`,
+      stage: customSettings.domain.stage,
+      basePath: customSettings.domain.basePath,
+      certificateName: `*.${customSettings.domain.name}`,
+      createRoute53Record: true,
+      createRoute53IPv6Record: true,
+      endpointType: 'regional',
+      securityPolicy: 'tls_1_2',
+      apiType: 'http',
+      autoDomain: false,
+    },
+  };
+};

@@ -7,6 +7,7 @@ const serverlessConfiguration: Serverless = {
   service: serviceName,
   frameworkVersion: '3',
   plugins: [
+    // 'serverless-domain-manager',
     'serverless-esbuild',
     'serverless-analyze-bundle-plugin',
     'serverless-offline',
