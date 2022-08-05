@@ -37,4 +37,10 @@ export const addJest = async (
       },
     }
   );
+  addPropertyToJestConfig(
+    host,
+    `${serviceRoot}/jest.config.ts`,
+    'coverageReporters',
+    ['json']
+  );
 };

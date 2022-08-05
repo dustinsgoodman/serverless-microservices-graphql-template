@@ -52,6 +52,11 @@ jobs:
       - name: Run tests
         run: yarn test:all
 
+      - name: Upload Code Coverage
+        uses: codecov/codecov-action@v3
+        with:
+          files: ./coverage/libs/aws/coverage-final.json,./coverage/libs/utils/coverage-final.json,./coverage/libs/aws/coverage-final.json,./coverage/services/background-jobs/coverage-final.json,./coverage/services/example-service/coverage-final.json,./coverage/services/public-api/coverage-final.json
+
       - name: Create .env file for deployment
         run: |
           touch .env
