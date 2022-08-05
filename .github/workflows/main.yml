@@ -1,10 +1,9 @@
-name: CI
+name: CI/CD
 
 on:
   push:
     branches: [main]
-  pull_request_target:
-    branches: [main]
+  pull_request:
   workflow_dispatch:
 
 jobs:
@@ -31,17 +30,15 @@ jobs:
         with:
           profile: default
           region: us-east-1
-          key: xxx
-          secret: xxx
+          key: ${{ secrets.AWS_ACCESS_KEY }}
+          secret: ${{ secrets.AWS_SECRET }}
 
-      - name: Create .env file
+      - name: Create .env file for testing
         run: |
-          touch .env
-          echo IS_OFFLINE=$IS_OFFLINE >> .env
-          echo SLS_STAGE=$SLS_STAGE >> .env
-        env:
-          IS_OFFLINE: ${{ secrets.IS_OFFLINE }}
-          SLS_STAGE: ${{ secrets.SLS_STAGE }}
+          touch .env.test
+          echo IS_OFFLINE${{ secrets.IS_OFFLINE }} >> .env.test
+          echo SLS_STAGE=${{ secrets.SLS_STAGE }} >> .env.test
+          cat .env.test
 
       - name: Generate service
         run: yarn workspace-generator service test-service
@@ -55,5 +52,24 @@ jobs:
       - name: Run tests
         run: yarn test:all
 
+      - name: Upload Code Coverage
+        uses: codecov/codecov-action@v3
+        with:
+          files: ./coverage/libs/aws/coverage-final.json,./coverage/libs/utils/coverage-final.json,./coverage/libs/aws/coverage-final.json,./coverage/services/background-jobs/coverage-final.json,./coverage/services/example-service/coverage-final.json,./coverage/services/public-api/coverage-final.json
+
+      - name: Create .env file for deployment
+        run: |
+          touch .env
+          echo IS_OFFLINE${{ secrets.IS_OFFLINE }} >> .env
+          echo SLS_STAGE=${{ secrets.SLS_STAGE }} >> .env
+          cat .env
+
       - name: Run sls package
         run: yarn build:all
+
+      # - name: Deploy SLS Preview
+      #   if: github.ref != 'refs/heads/main'
+      #   run: npx nx run deploy:all --stage=${GITHUB_HEAD_REF}
+      # - name: Deploy SLS Dev
+      #   if: github.ref == 'refs/heads/main'
+      #   run: npx nx run deploy:all --stage=dev

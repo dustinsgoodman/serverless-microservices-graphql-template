@@ -1,4 +1,4 @@
-import { downcaseKeys } from './downcaseKeys';
+import { downcaseKeys } from './downcase-keys';
 
 describe('.downcaseKeys', () => {
   let subject;

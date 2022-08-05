@@ -1,6 +1,9 @@
 import { mergeResolvers, mergeTypeDefs } from '@graphql-tools/merge';
+import { makeExecutableSchema } from '@graphql-tools/schema';
 import { helloTypeDefs, helloResolvers } from './hello';
 
-export const typeDefs = mergeTypeDefs([helloTypeDefs]);
+const typeDefs = mergeTypeDefs([helloTypeDefs]);
 
-export const resolvers = mergeResolvers([helloResolvers]);
+const resolvers = mergeResolvers([helloResolvers]);
+
+export const schema = makeExecutableSchema({ typeDefs, resolvers });

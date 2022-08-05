@@ -1,6 +1,6 @@
 import { gql } from 'apollo-server-lambda';
 import { invoke } from '@serverless-template/aws';
-import { apolloServer } from '../../handlers/graphql';
+import { apolloServerExecute } from '../../utils/test';
 
 jest.mock('@serverless-template/aws');
 
@@ -13,12 +13,15 @@ describe('hello query', () => {
   beforeAll(async () => {
     greeting = 'World!';
     const QUERY = gql`
-      query HelloWorldQuery {
-        hello (greeting: "${greeting}")
+      query HelloWorldQuery($greeting: String!) {
+        hello(greeting: $greeting)
       }
     `;
     invokeMock.mockResolvedValue('Hello, World!');
-    subject = await apolloServer.executeOperation({ query: QUERY });
+    subject = await apolloServerExecute({
+      query: QUERY,
+      variables: { greeting },
+    });
   });
 
   afterAll(() => {

@@ -17,5 +17,6 @@ export default {
       statements: 100,
     },
   },
+  coverageReporters: ['json'],
   preset: '../../jest.preset.js',
 };

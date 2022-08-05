@@ -6,8 +6,6 @@ const serviceName = 'example-service';
 const serverlessConfiguration: Serverless = {
   service: serviceName,
   frameworkVersion: '3',
-  // app: '<serverless dashboard app>',
-  // org: '<serverless dashboard org>',
   plugins: [
     'serverless-esbuild',
     'serverless-analyze-bundle-plugin',

@@ -1,0 +1,37 @@
+name: Preview Deploy Cleanup
+
+# When pull requests are closed the associated
+# branch will be removed from SLS deploy
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  tear-down:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Configure Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+          cache: 'yarn'
+
+      - name: Install packages
+        run: yarn install --frozen-lockfile
+
+      # - name: Create AWS profile
+      #   uses: Fooji/create-aws-profile-action@v1
+      #   with:
+      #     profile: default
+      #     region: us-east-1
+      #     key: ${{ secrets.AWS_ACCESS_KEY }}
+      #     secret: ${{ secrets.AWS_SECRET }}
+
+      # - name: Deploy SLS
+      #   run: yarn remove:all --stage=${GITHUB_HEAD_REF}
