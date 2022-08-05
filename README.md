@@ -127,31 +127,27 @@ yarn affected:build
 yarn all:build
 ```
 
-Pass the `--stage <STAGE_NAME>` flag if you're creating a build for a specific environment.
+Pass the `--stage=<STAGE_NAME>` flag if you're creating a build for a specific environment.
 
 **Deploying services**
 
 ```shell
 # Deploy a single service to a stage
-yarn deploy:<stage> <SERVICE_NAME>
+yarn deploy <SERVICE_NAME> --stage=<STAGE_NAME>
 
 # Deploy all services to a stage
-yarn deploy:all:<stage>
+yarn deploy:all --stage=<STAGE_NAME>
 ```
-
-where `<stage>` is one of: `[dev, stage, prod]`.
 
 **Removing deployed service**
 
 ```shell
 # Remove a single service from a stage
-yarn remove:<stage> <SERVICE_NAME>
+yarn remove <SERVICE_NAME> --stage=<STAGE_NAME>
 
 # Remove all services for a stage
-yarn remove:all:<stage>
+yarn remove:all --stage=<STAGE_NAME>
 ```
-
-where `<stage>` is one of: `[dev, stage, prod]`.
 
 **Run tests**
 
