@@ -4053,6 +4053,22 @@ aws-sdk@^2.1136.0, aws-sdk@^2.1174.0, aws-sdk@^2.970.0:
     uuid "8.0.0"
     xml2js "0.4.19"
 
+aws-sdk@^2.1186.0:
+  version "2.1189.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1189.0.tgz#8dd6b48dd7896642af8e2f86e026932a28e380d5"
+  integrity sha512-EqluXSo8XAR086nF9UAtPYwUm82ZIRqg8OmHBRQyftcrD1Z0pqMmiuvacXoEAJ/4UU8KKafbpYarxx8rH/pZjQ==
+  dependencies:
+    buffer "4.9.2"
+    events "1.1.1"
+    ieee754 "1.1.13"
+    jmespath "0.16.0"
+    querystring "0.2.0"
+    sax "1.2.1"
+    url "0.10.3"
+    util "^0.12.4"
+    uuid "8.0.0"
+    xml2js "0.4.19"
+
 axios@^0.21.1:
   version "0.21.4"
   resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.4.tgz#c67b90dc0568e5c1cf2b0b858c43ba28e2eda575"
@@ -9630,6 +9646,13 @@ serverless-analyze-bundle-plugin@^1.2.0:
   dependencies:
     "@babel/runtime" "^7.18.6"
     check-node-version "^4.2.1"
+
+serverless-domain-manager@^6.0.4:
+  version "6.0.4"
+  resolved "https://registry.yarnpkg.com/serverless-domain-manager/-/serverless-domain-manager-6.0.4.tgz#4791a2153f89083987d0bbad644c32651f67351a"
+  integrity sha512-G2SuRl4zt6XQ7ZxZR65PJu50mRyPA48V6O/9NHUJYCn5Lw7/DUPki3SaEJMx4kyXFbdzulfm8zeY3MgWY4t7Kg==
+  dependencies:
+    aws-sdk "^2.1186.0"
 
 serverless-esbuild@^1.32.5:
   version "1.32.5"
