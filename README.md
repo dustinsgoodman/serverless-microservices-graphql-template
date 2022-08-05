@@ -2,7 +2,7 @@
 
 [![serverless](http://public.serverless.com/badges/v3.svg)](http://www.serverless.com)
 [![Nx monorepo](https://img.shields.io/badge/monorepo-Nx-blue)](https://nx.dev/)
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/sudokar/nx-serverless/blob/master/LICENSE)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/dustinsgoodman/serverless-microservices-graphql-template/blob/main/LICENSE.md)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/dustinsgodman/serverless-template)
 [![codecov](https://codecov.io/gh/dustinsgoodman/serverless-microservices-graphql-template/branch/main/graph/badge.svg?token=HZCVZ0DPWD)](https://codecov.io/gh/dustinsgoodman/serverless-microservices-graphql-template)
 
