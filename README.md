@@ -1,9 +1,7 @@
 # Serverless Micoservices w/ GraphQL Template
 
 [![serverless](http://public.serverless.com/badges/v3.svg)](http://www.serverless.com)
-[![](https://img.shields.io/badge/monorepo-Nx-blue)](https://nx.dev/)
-![npm peer dependency version (scoped)](https://img.shields.io/npm/dependency-version/eslint-config-prettier/peer/eslint)
-![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)
+[![Nx monorepo](https://img.shields.io/badge/monorepo-Nx-blue)](https://nx.dev/)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/sudokar/nx-serverless/blob/master/LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/dustinsgodman/serverless-template)
 [![codecov](https://codecov.io/gh/dustinsgoodman/serverless-microservices-graphql-template/branch/main/graph/badge.svg?token=HZCVZ0DPWD)](https://codecov.io/gh/dustinsgoodman/serverless-microservices-graphql-template)
