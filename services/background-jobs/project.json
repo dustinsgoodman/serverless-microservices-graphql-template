@@ -19,52 +19,20 @@
         "command": "sls offline start"
       }
     },
-    "deploy-dev": {
+    "deploy": {
       "executor": "./tools/executors/workspace:run-command",
       "options": {
         "cwd": "services/background-jobs",
         "color": true,
-        "command": "sls deploy --stage dev"
+        "command": "sls deploy --stage {args.stage}"
       }
     },
-    "deploy-stage": {
+    "remove": {
       "executor": "./tools/executors/workspace:run-command",
       "options": {
         "cwd": "services/background-jobs",
         "color": true,
-        "command": "sls deploy --stage stage"
-      }
-    },
-    "deploy-prod": {
-      "executor": "./tools/executors/workspace:run-command",
-      "options": {
-        "cwd": "services/background-jobs",
-        "color": true,
-        "command": "sls deploy --stage prod"
-      }
-    },
-    "remove-dev": {
-      "executor": "./tools/executors/workspace:run-command",
-      "options": {
-        "cwd": "services/background-jobs",
-        "color": true,
-        "command": "sls remove --stage dev"
-      }
-    },
-    "remove-stage": {
-      "executor": "./tools/executors/workspace:run-command",
-      "options": {
-        "cwd": "services/background-jobs",
-        "color": true,
-        "command": "sls remove --stage stage"
-      }
-    },
-    "remove-prod": {
-      "executor": "./tools/executors/workspace:run-command",
-      "options": {
-        "cwd": "services/background-jobs",
-        "color": true,
-        "command": "sls remove --stage prod"
+        "command": "sls remove --stage {args.stage}"
       }
     },
     "analyze": {

@@ -14,13 +14,13 @@ describe('hello query', () => {
   beforeAll(async () => {
     greeting = 'World!';
     const QUERY = gql`
-      query HelloWorldQuery {
-        hello (greeting: "${greeting}")
+      query HelloWorldQuery($greeting: String!) {
+        hello(greeting: $greeting)
       }
     `;
     invokeMock.mockResolvedValue('Hello, World!');
     subject = await apolloServer.executeOperation(
-      { query: QUERY },
+      { query: QUERY, variables: { greeting } },
       getContextConfig()
     );
   });
