@@ -25,7 +25,5 @@
   "workspaceLayout": {
     "appsDir": "services"
   },
-  "cli": {
-    "defaultCollection": "@nrwl/node"
-  }
+  "$schema": "./node_modules/nx/schemas/nx-schema.json"
 }

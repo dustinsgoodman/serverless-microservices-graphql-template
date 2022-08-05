@@ -6,5 +6,6 @@
     "example-service": "services/example-service",
     "public-api": "services/public-api",
     "utils": "libs/utils"
-  }
+  },
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json"
 }
