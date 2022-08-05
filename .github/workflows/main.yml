@@ -36,8 +36,8 @@ jobs:
       - name: Create .env file for testing
         run: |
           touch .env.test
-          echo IS_OFFLINE${{ secrets.IS_OFFLINE }} >> .env
-          echo SLS_STAGE=${{ secrets.SLS_STAGE }} >> .env
+          echo IS_OFFLINE${{ secrets.IS_OFFLINE }} >> .env.test
+          echo SLS_STAGE=${{ secrets.SLS_STAGE }} >> .env.test
           cat .env.test
 
       - name: Generate service
