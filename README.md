@@ -6,6 +6,7 @@
 ![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/sudokar/nx-serverless/blob/master/LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/dustinsgodman/serverless-template)
+[![codecov](https://codecov.io/gh/dustinsgoodman/serverless-microservices-graphql-template/branch/main/graph/badge.svg?token=HZCVZ0DPWD)](https://codecov.io/gh/dustinsgoodman/serverless-microservices-graphql-template)
 
 A template for a Serverless Framework microservices architecture based on the [nx-serverless-template by sudokar](https://github.com/sudokar/nx-serverless).
 
