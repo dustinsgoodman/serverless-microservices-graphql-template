@@ -70,7 +70,7 @@ The original template is phenomenal, but I was aiming for some additional custom
   - [Eslint](https://eslint.org/)
   - [Prettier](https://prettier.io/)
   - [EditorConfig](https://editorconfig.org/)
-- Jest for testing
+- [Jest](https://jestjs.io/) for testing
 
 ## Usage
 
