@@ -54,7 +54,7 @@
     "@aws-sdk/types": "^3.78.0",
     "@babel/generator": "^7.18.9",
     "@babel/parser": "^7.18.11",
-    "@babel/types": "^7.18.8",
+    "@babel/types": "^7.18.10",
     "@graphql-codegen/cli": "^2.11.3",
     "@graphql-codegen/introspection": "^2.2.0",
     "@graphql-codegen/schema-ast": "^2.4.1",
