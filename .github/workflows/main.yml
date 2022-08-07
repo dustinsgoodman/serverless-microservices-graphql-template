@@ -34,11 +34,7 @@ jobs:
           secret: ${{ secrets.AWS_SECRET }}
 
       - name: Create .env file for testing
-        run: |
-          touch .env.test
-          echo IS_OFFLINE${{ secrets.IS_OFFLINE }} >> .env.test
-          echo SLS_STAGE=${{ secrets.SLS_STAGE }} >> .env.test
-          cat .env.test
+        run: cp .env.example .env.test
 
       - name: Generate service
         run: yarn workspace-generator service test-service
