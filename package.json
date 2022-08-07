@@ -78,7 +78,7 @@
     "aws-sdk-client-mock": "^0.6.2",
     "esbuild": "^0.14.49",
     "esbuild-visualizer": "^0.3.1",
-    "eslint": "8.15.0",
+    "eslint": "8.21.0",
     "eslint-config-prettier": "^8.5.0",
     "graphql-schema-linter": "^3.0.1",
     "husky": "^8.0.1",
