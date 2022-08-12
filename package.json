@@ -72,7 +72,7 @@
     "@types/aws-lambda": "^8.10.102",
     "@types/jest": "27.4.1",
     "@types/node": "18.7.2",
-    "@types/serverless": "^3.12.7",
+    "@types/serverless": "^3.12.8",
     "@typescript-eslint/eslint-plugin": "5.33.0",
     "@typescript-eslint/parser": "5.33.0",
     "aws-sdk-client-mock": "^1.0.0",
