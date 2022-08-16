@@ -30,12 +30,12 @@ Most of your resolvers will probably invoke lambdas in other services. You can a
 
 ```ts
 const data = await invoke({
-  serviceName: 'name-of-serivce',
-  functionName: 'function-you-want-to-invoke',
-  payload: {
-    // payload to send to the invoked function
-  },
-  context, // from the current request's context
+	serviceName: 'name-of-serivce',
+	functionName: 'function-you-want-to-invoke',
+	payload: {
+		// payload to send to the invoked function
+	},
+	context, // from the current request's context
 });
 ```
 

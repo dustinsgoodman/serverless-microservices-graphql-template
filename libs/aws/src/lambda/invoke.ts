@@ -1,7 +1,7 @@
 import {
-  APIGatewayProxyEvent,
-  Context as LambdaContext,
-  APIGatewayProxyEventHeaders,
+	APIGatewayProxyEvent,
+	Context as LambdaContext,
+	APIGatewayProxyEventHeaders,
 } from 'aws-lambda';
 import { InvokeCommand } from '@aws-sdk/client-lambda';
 import { TextEncoder, TextDecoder } from 'util';
@@ -10,17 +10,17 @@ import { downcaseKeys } from '@serverless-template/utils';
 import { getClient } from './client';
 
 export type Context = {
-  event?: APIGatewayProxyEvent;
-  context?: LambdaContext;
-  userId?: string | number;
+	event?: APIGatewayProxyEvent;
+	context?: LambdaContext;
+	userId?: string | number;
 };
 
 type InvokeParams = {
-  serviceName: Service;
-  functionName: string;
-  payload?: object;
-  context?: Context;
-  invocationType?: 'RequestResponse' | 'Event';
+	serviceName: Service;
+	functionName: string;
+	payload?: object;
+	context?: Context;
+	invocationType?: 'RequestResponse' | 'Event';
 };
 
 /**
@@ -33,50 +33,50 @@ type InvokeParams = {
  * @returns {Object} payload - The JSON data that is returned from the Lambda invocation
  */
 export const invoke = async <ReturnType>({
-  serviceName,
-  functionName,
-  payload,
-  context = {},
-  invocationType = 'RequestResponse',
+	serviceName,
+	functionName,
+	payload,
+	context = {},
+	invocationType = 'RequestResponse',
 }: InvokeParams): Promise<ReturnType | null> => {
-  const combinedPayload = {
-    ...context.event,
-    body: JSON.stringify(payload),
-  };
+	const combinedPayload = {
+		...context.event,
+		body: JSON.stringify(payload),
+	};
 
-  // forcing all headers for case insensitivity
-  if (combinedPayload.headers) {
-    combinedPayload.headers = downcaseKeys(
-      combinedPayload.headers
-    ) as APIGatewayProxyEventHeaders;
-  }
+	// forcing all headers for case insensitivity
+	if (combinedPayload.headers) {
+		combinedPayload.headers = downcaseKeys(
+			combinedPayload.headers
+		) as APIGatewayProxyEventHeaders;
+	}
 
-  const combinedContext = {
-    ...context.context,
-    // insert other key context to pass along like userId
-    // userId: context.userId,
-  };
+	const combinedContext = {
+		...context.context,
+		// insert other key context to pass along like userId
+		// userId: context.userId,
+	};
 
-  const stringifiedContext = JSON.stringify(combinedContext);
-  const processedContext = Buffer.from(stringifiedContext).toString('base64');
-  const params = {
-    ClientContext: processedContext,
-    FunctionName: `${serviceName}-${process.env.SLS_STAGE}-${functionName}`,
-    InvocationType: invocationType,
-    Payload: new TextEncoder().encode(JSON.stringify(combinedPayload)),
-    LogType: 'Tail',
-  };
+	const stringifiedContext = JSON.stringify(combinedContext);
+	const processedContext = Buffer.from(stringifiedContext).toString('base64');
+	const params = {
+		ClientContext: processedContext,
+		FunctionName: `${serviceName}-${process.env.SLS_STAGE}-${functionName}`,
+		InvocationType: invocationType,
+		Payload: new TextEncoder().encode(JSON.stringify(combinedPayload)),
+		LogType: 'Tail',
+	};
 
-  const command = new InvokeCommand(params);
-  const { Payload, FunctionError } = await getClient(serviceName).send(command);
+	const command = new InvokeCommand(params);
+	const { Payload, FunctionError } = await getClient(serviceName).send(command);
 
-  if (FunctionError) {
-    throw new Error(FunctionError);
-  }
+	if (FunctionError) {
+		throw new Error(FunctionError);
+	}
 
-  if (Payload) {
-    return JSON.parse(new TextDecoder().decode(Payload));
-  }
+	if (Payload) {
+		return JSON.parse(new TextDecoder().decode(Payload));
+	}
 
-  return null;
+	return null;
 };

@@ -1,9 +1,9 @@
 {
-  "executors": {
-    "run-command": {
-      "implementation": "./impl",
-      "schema": "./schema.json",
-      "description": "Runs a command without capturing stdin/stdout/stderr"
-    }
-  }
+	"executors": {
+		"run-command": {
+			"implementation": "./impl",
+			"schema": "./schema.json",
+			"description": "Runs a command without capturing stdin/stdout/stderr"
+		}
+	}
 }

@@ -1,3 +1,3 @@
 export type Schema = {
-  readonly name: string;
+	readonly name: string;
 };

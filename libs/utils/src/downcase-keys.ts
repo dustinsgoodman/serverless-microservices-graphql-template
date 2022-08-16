@@ -3,7 +3,7 @@
  * operations like header checking
  */
 export const downcaseKeys = (obj: object): object =>
-  Object.entries(obj).reduce((acc, [key, value]) => {
-    acc[key.toLowerCase()] = value;
-    return acc;
-  }, {});
+	Object.entries(obj).reduce((acc, [key, value]) => {
+		acc[key.toLowerCase()] = value;
+		return acc;
+	}, {});

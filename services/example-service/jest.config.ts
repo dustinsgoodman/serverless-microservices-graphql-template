@@ -1,22 +1,22 @@
 export default {
-  displayName: 'example-service',
+	displayName: 'example-service',
 
-  globals: {
-    'ts-jest': {
-      tsconfig: '<rootDir>/tsconfig.spec.json',
-    },
-  },
-  testEnvironment: 'node',
-  collectCoverage: true,
-  coverageDirectory: '../../coverage/services/example-service',
-  coverageThreshold: {
-    global: {
-      branches: 100,
-      functions: 100,
-      lines: 100,
-      statements: 100,
-    },
-  },
-  coverageReporters: ['json'],
-  preset: '../../jest.preset.js',
+	globals: {
+		'ts-jest': {
+			tsconfig: '<rootDir>/tsconfig.spec.json',
+		},
+	},
+	testEnvironment: 'node',
+	collectCoverage: true,
+	coverageDirectory: '../../coverage/services/example-service',
+	coverageThreshold: {
+		global: {
+			branches: 100,
+			functions: 100,
+			lines: 100,
+			statements: 100,
+		},
+	},
+	coverageReporters: ['json'],
+	preset: '../../jest.preset.js',
 };

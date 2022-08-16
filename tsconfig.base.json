@@ -1,24 +1,24 @@
 {
-  "compileOnSave": false,
-  "compilerOptions": {
-    "rootDir": ".",
-    "sourceMap": true,
-    "declaration": false,
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "importHelpers": false,
-    "target": "es2015",
-    "module": "commonjs",
-    "lib": ["esnext"],
-    "skipLibCheck": true,
-    "skipDefaultLibCheck": true,
-    "baseUrl": ".",
-    "paths": {
-      "@serverless-template/aws": ["libs/aws/src/index.ts"],
-      "@serverless-template/serverless-common": ["serverless.common.ts"],
-      "@serverless-template/utils": ["libs/utils/src/index.ts"]
-    }
-  },
-  "exclude": ["node_modules", "tmp"]
+	"compileOnSave": false,
+	"compilerOptions": {
+		"rootDir": ".",
+		"sourceMap": true,
+		"declaration": false,
+		"moduleResolution": "node",
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"importHelpers": false,
+		"target": "es2015",
+		"module": "commonjs",
+		"lib": ["esnext"],
+		"skipLibCheck": true,
+		"skipDefaultLibCheck": true,
+		"baseUrl": ".",
+		"paths": {
+			"@serverless-template/aws": ["libs/aws/src/index.ts"],
+			"@serverless-template/serverless-common": ["serverless.common.ts"],
+			"@serverless-template/utils": ["libs/utils/src/index.ts"]
+		}
+	},
+	"exclude": ["node_modules", "tmp"]
 }
