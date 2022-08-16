@@ -1,29 +1,29 @@
 {
-  "npmScope": "serverless-template",
-  "affected": {
-    "defaultBase": "main"
-  },
-  "implicitDependencies": {
-    "workspace.json": "*",
-    "package.json": {
-      "dependencies": "*",
-      "devDependencies": "*"
-    },
-    "tsconfig.base.json": "*",
-    "tslint.json": "*",
-    ".eslintrc.json": "*",
-    "nx.json": "*"
-  },
-  "tasksRunnerOptions": {
-    "default": {
-      "runner": "@nrwl/workspace/tasks-runners/default",
-      "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
-      }
-    }
-  },
-  "workspaceLayout": {
-    "appsDir": "services"
-  },
-  "$schema": "./node_modules/nx/schemas/nx-schema.json"
+	"npmScope": "serverless-template",
+	"affected": {
+		"defaultBase": "main"
+	},
+	"implicitDependencies": {
+		"workspace.json": "*",
+		"package.json": {
+			"dependencies": "*",
+			"devDependencies": "*"
+		},
+		"tsconfig.base.json": "*",
+		"tslint.json": "*",
+		".eslintrc.json": "*",
+		"nx.json": "*"
+	},
+	"tasksRunnerOptions": {
+		"default": {
+			"runner": "@nrwl/workspace/tasks-runners/default",
+			"options": {
+				"cacheableOperations": ["build", "lint", "test", "e2e"]
+			}
+		}
+	},
+	"workspaceLayout": {
+		"appsDir": "services"
+	},
+	"$schema": "./node_modules/nx/schemas/nx-schema.json"
 }
