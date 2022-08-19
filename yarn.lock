@@ -3510,12 +3510,7 @@ acorn@^7.1.1:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-7.4.1.tgz#feaed255973d2e77555b83dbc08851a6c63520fa"
   integrity sha512-nQyp0o1/mNdbTO1PO6kHkwSrmgZ0MT/jCCpNiwbUjGoRN4dlBhqJtoQuCnEOKzgTVwg0ZWiCoQy6SxMebQVh8A==
 
-acorn@^8.2.4, acorn@^8.4.1, acorn@^8.5.0, acorn@^8.7.1:
-  version "8.7.1"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.7.1.tgz#0197122c843d1bf6d0a5e83220a788f278f63c30"
-  integrity sha512-Xx54uLJQZ19lKygFXOWsscKUbsBZW0CPykPhVQdhIeIwrbPmJzqeASDInc8nKBnp/JT6igTs82qPXz069H8I/A==
-
-acorn@^8.8.0:
+acorn@^8.2.4, acorn@^8.4.1, acorn@^8.5.0, acorn@^8.7.1, acorn@^8.8.0:
   version "8.8.0"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.8.0.tgz#88c0187620435c7f6015803f5539dae05a9dbea8"
   integrity sha512-QOxyigPVrpZ2GXT+PFyZTl6TtOFc5egxHIP9IlQ+RbupQuX4RkT/Bee4/kQuC02Xkzg84JcT7oLYtDIQxp+v7w==
@@ -9499,10 +9494,10 @@ serverless-analyze-bundle-plugin@^1.2.0:
     "@babel/runtime" "^7.18.6"
     check-node-version "^4.2.1"
 
-serverless-esbuild@^1.32.5:
-  version "1.32.5"
-  resolved "https://registry.yarnpkg.com/serverless-esbuild/-/serverless-esbuild-1.32.5.tgz#833b9ddb4917edf00caabb92ad6e52c70bcec307"
-  integrity sha512-l8Tih/3W+cLLlRqJULCuEp9QHQlCwV+auAu9HL0y6KdU2jl2NCrTq8UTjhKUd4MYkVvik6ljc4ZGeZhGLfobgg==
+serverless-esbuild@^1.32.7:
+  version "1.32.7"
+  resolved "https://registry.yarnpkg.com/serverless-esbuild/-/serverless-esbuild-1.32.7.tgz#769ab615c3f0fcc387909d73c3bb013b095a48ff"
+  integrity sha512-X772V0J/PJo1FDJNkUSeAxUDvUbxw7gmQyBpGPHuY39z0+FEhyxLPHczNyiu3s1Zlb66y+qOmTzfAThkpD2vTg==
   dependencies:
     acorn "^8.7.1"
     acorn-walk "^8.2.0"
