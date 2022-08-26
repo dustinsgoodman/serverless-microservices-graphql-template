@@ -61,7 +61,7 @@
 		"@graphql-codegen/typescript": "^2.7.2",
 		"@graphql-codegen/typescript-operations": "^2.5.3",
 		"@graphql-codegen/typescript-resolvers": "^2.7.3",
-		"@jest/transform": "^28.1.3",
+		"@jest/transform": "^29.0.1",
 		"@nrwl/cli": "14.5.4",
 		"@nrwl/devkit": "14.5.4",
 		"@nrwl/eslint-plugin-nx": "14.5.4",
@@ -95,7 +95,7 @@
 		"ts-loader": "^9.3.1",
 		"ts-node": "10.9.1",
 		"tsconfig-paths": "^4.1.0",
-		"typescript": "4.7.4"
+		"typescript": "4.8.2"
 	},
 	"engines": {
 		"node": ">=16 <17"
