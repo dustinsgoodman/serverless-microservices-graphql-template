@@ -51,7 +51,7 @@
 		"tslib": "^2.4.0"
 	},
 	"devDependencies": {
-		"@aws-sdk/types": "^3.78.0",
+		"@aws-sdk/types": "^3.159.0",
 		"@babel/generator": "^7.18.12",
 		"@babel/parser": "^7.18.11",
 		"@babel/types": "^7.18.10",
@@ -95,7 +95,7 @@
 		"ts-loader": "^9.3.1",
 		"ts-node": "10.9.1",
 		"tsconfig-paths": "^4.1.0",
-		"typescript": "4.7.4"
+		"typescript": "4.8.2"
 	},
 	"engines": {
 		"node": ">=16 <17"
