@@ -42,7 +42,7 @@
 		"workspace-generator": "nx workspace-generator"
 	},
 	"dependencies": {
-		"@aws-sdk/client-lambda": "^3.159.0",
+		"@aws-sdk/client-lambda": "^3.171.0",
 		"@aws-sdk/client-sqs": "^3.171.0",
 		"@graphql-tools/merge": "^8.3.4",
 		"@graphql-tools/schema": "^9.0.2",
