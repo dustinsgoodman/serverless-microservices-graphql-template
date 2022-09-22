@@ -2916,10 +2916,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/aws-lambda@^8.10.102", "@types/aws-lambda@^8.10.76":
-  version "8.10.102"
-  resolved "https://registry.yarnpkg.com/@types/aws-lambda/-/aws-lambda-8.10.102.tgz#d2402224ec30cdddfb669005c25b6ee01fd6f5be"
-  integrity sha512-BT05v46n9KtSHa9SgGuOvm49eSruJ9utD8iNXpdpuUVYk8wOcqmm1LEzpNRkrXxD0CULc38sdLpk6q3Wa2WOwg==
+"@types/aws-lambda@^8.10.104", "@types/aws-lambda@^8.10.76":
+  version "8.10.104"
+  resolved "https://registry.yarnpkg.com/@types/aws-lambda/-/aws-lambda-8.10.104.tgz#01ec1d55a08bdf1201150d9ecae39ff7cca9ff4a"
+  integrity sha512-HXZJH8aBa06re9NCtFudOr21izYZycgXIVjd8vFBSNSf6Ca4GYD77TfKqwYgcDqv4olqj5KK+Ks7Xi5IXFbNGA==
 
 "@types/babel__core@^7.0.0", "@types/babel__core@^7.1.14":
   version "7.1.18"
