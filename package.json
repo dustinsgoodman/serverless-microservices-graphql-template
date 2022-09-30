@@ -51,7 +51,7 @@
 		"tslib": "^2.4.0"
 	},
 	"devDependencies": {
-		"@aws-sdk/types": "^3.171.0",
+		"@aws-sdk/types": "^3.178.0",
 		"@babel/generator": "^7.19.0",
 		"@babel/parser": "^7.19.1",
 		"@babel/types": "^7.19.0",
