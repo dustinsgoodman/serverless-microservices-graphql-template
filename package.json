@@ -89,7 +89,7 @@
 		"prettier": "2.7.1",
 		"serverless": "^3.22.0",
 		"serverless-analyze-bundle-plugin": "^1.2.1",
-		"serverless-esbuild": "^1.32.8",
+		"serverless-esbuild": "^1.33.0",
 		"serverless-offline": "^8.8.1",
 		"serverless-offline-sqs": "^6.0.0",
 		"ts-jest": "27.1.4",
