@@ -27,6 +27,7 @@ describe('getClient', () => {
 		});
 
 		it('sets the endpoint to localhost', async () => {
+			expect(subject.config.isCustomEndpoint).toBe(true);
 			const { hostname } = await subject.config.endpoint();
 			expect(hostname).toMatch(/localhost/);
 		});
@@ -52,9 +53,8 @@ describe('getClient', () => {
 			expect(subject).toEqual(expect.any(SQSClient));
 		});
 
-		it('sets the endpoint to AWS sqs', async () => {
-			const { hostname } = await subject.config.endpoint();
-			expect(hostname).toMatch(/sqs\.\S+\.amazonaws\.com/);
+		it('uses the default AWS SQS endpoint', async () => {
+			expect(subject.config.isCustomEndpoint).toBe(false);
 		});
 	});
 
