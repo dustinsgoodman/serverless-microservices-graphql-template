@@ -87,7 +87,7 @@
 		"lint-staged": "^13.0.3",
 		"nx": "14.5.4",
 		"prettier": "2.7.1",
-		"serverless": "^3.22.0",
+		"serverless": "^3.24.1",
 		"serverless-analyze-bundle-plugin": "^1.2.1",
 		"serverless-esbuild": "^1.33.0",
 		"serverless-offline": "^11.2.3",
