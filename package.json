@@ -61,7 +61,7 @@
 		"@graphql-codegen/typescript": "^2.8.1",
 		"@graphql-codegen/typescript-operations": "^2.5.5",
 		"@graphql-codegen/typescript-resolvers": "^2.7.7",
-		"@jest/transform": "^29.1.2",
+		"@jest/transform": "^29.3.1",
 		"@nrwl/cli": "14.5.4",
 		"@nrwl/devkit": "14.5.4",
 		"@nrwl/eslint-plugin-nx": "14.5.4",
