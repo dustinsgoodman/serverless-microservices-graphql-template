@@ -2393,7 +2393,7 @@
     "@graphql-tools/utils" "8.9.0"
     tslib "^2.4.0"
 
-"@graphql-tools/merge@8.3.10", "@graphql-tools/merge@^8.2.6", "@graphql-tools/merge@^8.3.7":
+"@graphql-tools/merge@8.3.10":
   version "8.3.10"
   resolved "https://registry.yarnpkg.com/@graphql-tools/merge/-/merge-8.3.10.tgz#81f374bc1e8c81d45cb1003d8ed05f181b7e6bd5"
   integrity sha512-/hSg69JwqEA+t01wQmMGKPuaJ9VJBSz6uAXhbNNrTBJu8bmXljw305NVXM49pCwDKFVUGtbTqYrBeLcfT3RoYw==
@@ -2407,6 +2407,14 @@
   integrity sha512-uUBokxXi89bj08P+iCvQk3Vew4vcfL5ZM6NTylWi8PIpoq4r5nJ625bRuN8h2uubEdRiH8ntN9M4xkd/j7AybQ==
   dependencies:
     "@graphql-tools/utils" "8.12.0"
+    tslib "^2.4.0"
+
+"@graphql-tools/merge@^8.2.6", "@graphql-tools/merge@^8.3.12":
+  version "8.3.12"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/merge/-/merge-8.3.12.tgz#e3f2e5d8a7b34fb689cda66799d845cbc919e464"
+  integrity sha512-BFL8r4+FrqecPnIW0H8UJCBRQ4Y8Ep60aujw9c/sQuFmQTiqgWgpphswMGfaosP2zUinDE3ojU5wwcS2IJnumA==
+  dependencies:
+    "@graphql-tools/utils" "9.1.1"
     tslib "^2.4.0"
 
 "@graphql-tools/mock@^8.1.2":
