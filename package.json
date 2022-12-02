@@ -53,7 +53,7 @@
 	"devDependencies": {
 		"@aws-sdk/types": "^3.198.0",
 		"@babel/generator": "^7.20.2",
-		"@babel/parser": "^7.20.3",
+		"@babel/parser": "^7.20.5",
 		"@babel/types": "^7.19.0",
 		"@graphql-codegen/cli": "^2.14.0",
 		"@graphql-codegen/introspection": "^2.2.1",
