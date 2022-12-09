@@ -55,7 +55,7 @@
 		"@babel/generator": "^7.20.2",
 		"@babel/parser": "^7.20.3",
 		"@babel/types": "^7.19.0",
-		"@graphql-codegen/cli": "^2.14.0",
+		"@graphql-codegen/cli": "^2.16.1",
 		"@graphql-codegen/introspection": "^2.2.1",
 		"@graphql-codegen/schema-ast": "^2.5.1",
 		"@graphql-codegen/typescript": "^2.8.1",
