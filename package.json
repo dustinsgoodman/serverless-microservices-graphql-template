@@ -3,6 +3,9 @@
 	"version": "1.0.0",
 	"license": "MIT",
 	"private": true,
+	"sideEffects": [
+		"libs/aws/**/client.ts"
+	],
 	"scripts": {
 		"nx": "nx",
 		"build": "nx build",
@@ -78,6 +81,7 @@
 		"aws-sdk-client-mock": "^2.0.1",
 		"aws-sdk-client-mock-jest": "^2.0.1",
 		"esbuild": "^0.15.18",
+		"esbuild-node-externals": "^1.6.0",
 		"esbuild-visualizer": "^0.3.1",
 		"eslint": "8.26.0",
 		"eslint-config-prettier": "^8.5.0",
