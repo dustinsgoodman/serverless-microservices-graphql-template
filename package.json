@@ -95,7 +95,7 @@
 		"serverless-analyze-bundle-plugin": "^1.2.1",
 		"serverless-esbuild": "^1.33.0",
 		"serverless-offline": "^11.6.0",
-		"serverless-offline-sqs": "^7.3.1",
+		"serverless-offline-sqs": "^7.3.2",
 		"ts-jest": "27.1.4",
 		"ts-loader": "^9.4.2",
 		"ts-node": "10.9.1",

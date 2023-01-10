@@ -10525,10 +10525,10 @@ serverless-esbuild@^1.33.0:
     ramda "^0.27.0"
     semver "^7.3.5"
 
-serverless-offline-sqs@^7.3.1:
-  version "7.3.1"
-  resolved "https://registry.yarnpkg.com/serverless-offline-sqs/-/serverless-offline-sqs-7.3.1.tgz#de3aec858e4314d4ff738e591245b23cfbecd5db"
-  integrity sha512-5KdvLPij8MyHropg9CfoDsDfMuyaelfuk7PILQ5eCupSSrNe3cFr1U2bAmMeqzr2AnjYMDLHnpBUhTDLJZ8RFA==
+serverless-offline-sqs@^7.3.2:
+  version "7.3.2"
+  resolved "https://registry.yarnpkg.com/serverless-offline-sqs/-/serverless-offline-sqs-7.3.2.tgz#3a97d456ecdb6312b7874ca7201913ac56f0f789"
+  integrity sha512-e2qsDdyidBYVct+UNCnw1tNjSwjbmQlw4iD0oe3SsH2X29UBL1lJkZbtnAPimWqoDsdSNIhU7vg70f1GYSmecQ==
   dependencies:
     aws-sdk "^2.1234.0"
     lodash "^4.17.21"
