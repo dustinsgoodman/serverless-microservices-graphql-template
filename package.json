@@ -83,7 +83,7 @@
 		"esbuild": "^0.15.18",
 		"esbuild-node-externals": "^1.6.0",
 		"esbuild-visualizer": "^0.3.1",
-		"eslint": "8.31.0",
+		"eslint": "8.32.0",
 		"eslint-config-prettier": "^8.5.0",
 		"graphql-schema-linter": "^3.0.1",
 		"husky": "^8.0.2",
