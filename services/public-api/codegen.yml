@@ -18,4 +18,5 @@ generates:
       commentDescriptions: true
       sort: true
 require:
+  - ts-node/register
   - tsconfig-paths/register
