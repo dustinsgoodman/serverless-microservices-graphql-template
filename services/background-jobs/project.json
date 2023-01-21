@@ -1,4 +1,5 @@
 {
+	"name": "background-jobs",
 	"$schema": "../../node_modules/nx/schemas/project-schema.json",
 	"projectType": "application",
 	"sourceRoot": "services/background-jobs/src",
@@ -51,7 +52,7 @@
 		},
 		"test": {
 			"executor": "@nrwl/jest:jest",
-			"outputs": ["coverage/services/background-jobs"],
+			"outputs": ["{workspaceRoot}/coverage/services/background-jobs"],
 			"options": {
 				"jestConfig": "services/background-jobs/jest.config.ts",
 				"passWithNoTests": true
