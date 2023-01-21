@@ -7,10 +7,7 @@ export default {
 			tsconfig: '<rootDir>/tsconfig.spec.json',
 		},
 	},
-	transform: {
-		'^.+\\.[tj]sx?$': 'ts-jest',
-	},
-	moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
+	testEnvironment: 'node',
 	collectCoverage: true,
 	coverageDirectory: '../../coverage/libs/utils',
 	coverageThreshold: {
