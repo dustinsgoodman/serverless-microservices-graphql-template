@@ -1,4 +1,5 @@
 {
+	"name": "aws",
 	"$schema": "../../node_modules/nx/schemas/project-schema.json",
 	"sourceRoot": "libs/aws/src",
 	"projectType": "library",
@@ -12,7 +13,7 @@
 		},
 		"test": {
 			"executor": "@nrwl/jest:jest",
-			"outputs": ["coverage/libs/aws"],
+			"outputs": ["{workspaceRoot}/coverage/libs/aws"],
 			"options": {
 				"jestConfig": "libs/aws/jest.config.ts",
 				"passWithNoTests": true
