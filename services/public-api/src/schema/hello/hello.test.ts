@@ -1,6 +1,6 @@
 import { gql } from 'apollo-server-lambda';
 import { invoke } from '@serverless-template/aws';
-import { apolloServerExecute } from '../../utils/test';
+import { apolloServerExecute } from '../../utils/apolloTest';
 
 jest.mock('@serverless-template/aws');
 
