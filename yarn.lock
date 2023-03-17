@@ -11592,10 +11592,10 @@ serverless-analyze-bundle-plugin@^1.2.1:
     check-node-version "^4.2.1"
     node-stream-zip "^1.15.0"
 
-serverless-esbuild@^1.37.2:
-  version "1.37.2"
-  resolved "https://registry.yarnpkg.com/serverless-esbuild/-/serverless-esbuild-1.37.2.tgz#bb75818b1e165e5b675513b0024ffd15a9f6e879"
-  integrity sha512-Dsi4YReogPBy9fTIQEKpFJfaSZdbSAG4UeKcDzmSgxTMeIz4CWssAzJ0whwONqpfmHf82lcxd7PUviqTJ98vrA==
+serverless-esbuild@^1.41.0:
+  version "1.41.0"
+  resolved "https://registry.yarnpkg.com/serverless-esbuild/-/serverless-esbuild-1.41.0.tgz#dd98d49e948cd936dc7fc5a95a88a04706be4b70"
+  integrity sha512-gcbbfV+7dVn4RWgCLL/+qxB3BDXbVzpVrJNeTxNcyHusbbHeOlHIPinGu9OgKi2tpz5p8JbWRr5vzJgtizpdGw==
   dependencies:
     acorn "^8.8.1"
     acorn-walk "^8.2.0"
